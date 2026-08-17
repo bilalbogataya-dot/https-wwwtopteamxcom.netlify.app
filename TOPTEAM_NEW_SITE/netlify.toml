@@ -1,0 +1,13 @@
+# Netlify Configuration File for TOPTEAM Website
+[build]
+  # المجلد المنشور هو المجلد الرئيسي للمشروع حيث يوجد index.html
+  publish = "."
+  # لا حاجة لأي أمر بناء لأن الموقع يعتمد على HTML/CSS/JS النقي فائق السرعة
+  command = ""
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

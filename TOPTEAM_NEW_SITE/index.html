@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TOPTEAM | المنظومة المتكاملة للعملات الرقمية وتعدين البيتكوين والبلوكشين</title>
+  <meta name="description" content="اكتشف عالم العملات الرقمية وتعدين البيتكوين مع TOPTEAM. خبرة تتجاوز 13 عامًا في تقنية البلوكشين واستكشاف أحدث الفرص ومشاريع التعدين السحابي ومشروع HashNet.">
+  
+  <!-- Favicon (SVG) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%230c111d'/><path d='M50 15 L80 32 L80 68 L50 85 L20 68 L20 32 Z' fill='none' stroke='%23f7931a' stroke-width='6'/><path d='M50 32 L50 68 M35 42 L65 58 M65 42 L35 58' stroke='%2300d2ff' stroke-width='4'/></svg>">
+
+  <!-- Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Core CSS Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Ambient Light Orbs -->
+  <div class="ambient-glow" aria-hidden="true">
+    <div class="glow-orb glow-orb-1"></div>
+    <div class="glow-orb glow-orb-2"></div>
+    <div class="glow-orb glow-orb-3"></div>
+  </div>
+
+  <!-- =========================================================================
+       FIXED HEADER / NAVBAR
+       ========================================================================= -->
+  <header class="header-sticky" id="mainHeader">
+    <div class="container">
+      <nav class="navbar" aria-label="Main Navigation">
+        
+        <!-- Brand Logo -->
+        <a href="#hero" class="brand-logo" id="brandLogo">
+          <div class="brand-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <div class="brand-name">TOP<span>TEAM</span></div>
+            <div class="brand-tagline">Crypto & Mining</div>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <ul class="nav-links">
+          <li><a href="#hero" class="nav-link active" data-i18n="nav.home">الرئيسية</a></li>
+          <li><a href="#edu-section" class="nav-link" data-i18n="nav.crypto">العملات الرقمية</a></li>
+          <li><a href="#coins-section" class="nav-link" data-i18n="nav.blockchain">العملات المدعومة</a></li>
+          <li><a href="#hashnet-section" class="nav-link" data-i18n="nav.hashnet">مشروع HashNet</a></li>
+          <li><a href="#packages-section" class="nav-link" data-i18n="nav.mining">باقات التعدين</a></li>
+          <li><a href="#live-btc-section" class="nav-link" data-i18n="nav.live">مؤشرات مباشرة</a></li>
+          <li><a href="#projects-section" class="nav-link" data-i18n="nav.projects">المشاريع</a></li>
+          <li><a href="#contact-section" class="nav-link" data-i18n="nav.contact">تواصل معنا</a></li>
+        </ul>
+
+        <!-- Action Items (Language Switcher + Primary CTA) -->
+        <div class="nav-actions">
+          
+          <!-- Language Dropdown -->
+          <div class="lang-dropdown-wrapper" id="langDropdown">
+            <button type="button" class="lang-btn" aria-label="اختيار اللغة" id="langBtn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              </svg>
+              <span class="current-lang-label">العربية</span>
+              <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <ul class="lang-menu" id="langMenu">
+              <li class="lang-item active" data-lang="ar">العربية (AR)</li>
+              <li class="lang-item" data-lang="en">English (EN)</li>
+              <li class="lang-item" data-lang="fr">Français (FR)</li>
+              <li class="lang-item" data-lang="es">Español (ES)</li>
+            </ul>
+          </div>
+
+          <!-- Header CTA Button (Direct Official Referral Link) -->
+          <a href="https://app.hashnet.ai/Topteam2" target="_blank" rel="noopener noreferrer" class="btn-primary btn-referral-start" id="headerCtaBtn" data-i18n="nav.startMining">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+            <span>ابدأ تعدين البيتكوين</span>
+          </a>
+
+          <!-- Mobile Hamburger Menu Button -->
+          <button type="button" class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="فتح القائمة">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+
+      </nav>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <aside class="mobile-drawer" id="mobileDrawer">
+    <div class="mobile-drawer-header">
+      <div class="brand-name">TOP<span>TEAM</span></div>
+      <button class="drawer-close" id="drawerClose" aria-label="إغلاق القائمة">&times;</button>
+    </div>
+    <ul class="drawer-nav-links">
+      <li><a href="#hero" class="drawer-nav-link" data-i18n="nav.home">الرئيسية</a></li>
+      <li><a href="#edu-section" class="drawer-nav-link" data-i18n="nav.crypto">العملات الرقمية</a></li>
+      <li><a href="#coins-section" class="drawer-nav-link" data-i18n="nav.blockchain">العملات المدعومة</a></li>
+      <li><a href="#hashnet-section" class="drawer-nav-link" data-i18n="nav.hashnet">مشروع HashNet</a></li>
+      <li><a href="#packages-section" class="drawer-nav-link" data-i18n="nav.mining">باقات التعدين</a></li>
+      <li><a href="#live-btc-section" class="drawer-nav-link" data-i18n="nav.live">مؤشرات مباشرة</a></li>
+      <li><a href="#projects-section" class="drawer-nav-link" data-i18n="nav.projects">المشاريع</a></li>
+      <li><a href="#contact-section" class="drawer-nav-link" data-i18n="nav.contact">تواصل معنا</a></li>
+    </ul>
+    <div style="margin-top: auto; padding-top: 1rem;">
+      <a href="https://app.hashnet.ai/Topteam2" target="_blank" rel="noopener noreferrer" class="btn-primary btn-referral-start" style="width: 100%;" data-i18n="nav.startMining">
+        <span>ابدأ تعدين البيتكوين</span>
+      </a>
+    </div>
+  </aside>
+
+
+  <!-- =========================================================================
+       MAIN CONTENT
+       ========================================================================= -->
+  <main>
+    
+    <!-- 1. HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <div class="container">
+        <div class="hero-grid">
+          
+          <!-- Hero Main Content Column -->
+          <div class="hero-content">
+            
+            <!-- Hero Pill Badge -->
+            <div class="hero-pill">
+              <span class="pulsing-dot"></span>
+              <span data-i18n="hero.badge">الجيل الجديد لتعدين العملات الرقمية والبلوكشين</span>
+            </div>
+
+            <!-- Hero Headline -->
+            <h1 class="hero-title">
+              <span data-i18n="hero.titleStart">اكتشف عالم العملات الرقمية مع</span>
+              <span class="brand-gradient">TOPTEAM</span>
+            </h1>
+
+            <!-- Hero Subtitle & Description -->
+            <p class="hero-desc" data-i18n="hero.description">
+              بخبرة تتجاوز 13 عامًا في عالم العملات الرقمية والتعدين وتقنية البلوكشين، نساعدك على فهم هذا المجال، واكتشاف أحدث المشاريع والفرص الرقمية، ومتابعة أهم التطورات في عالم العملات الرقمية.
+            </p>
+
+            <!-- Hero CTA Buttons -->
+            <div class="hero-cta-group">
+              <!-- Primary Referral CTA -->
+              <a href="https://app.hashnet.ai/Topteam2" target="_blank" rel="noopener noreferrer" class="btn-primary btn-hero-primary btn-referral-start" id="heroPrimaryCta" data-i18n="hero.btnPrimary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+                <span>ابدأ تعدين البيتكوين</span>
+              </a>
+
+              <!-- Secondary Explore CTA -->
+              <a href="#intro-experience" class="btn-secondary btn-hero-secondary" id="heroSecondaryCta" data-i18n="hero.btnSecondary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polygon points="10 8 16 12 10 16 10 8"></polygon>
+                </svg>
+                <span>اكتشف عالم العملات الرقمية</span>
+              </a>
+            </div>
+
+            <!-- Hero Quick Stats -->
+            <div class="hero-mini-stats">
+              <div class="mini-stat-item">
+                <div class="mini-stat-val" data-i18n="hero.stat1Val">+13 عام</div>
+                <div class="mini-stat-label" data-i18n="hero.stat1Label">سنوات خبرة في الكريبتو</div>
+              </div>
+              <div class="mini-stat-item">
+                <div class="mini-stat-val" data-i18n="hero.stat2Val">99.9%</div>
+                <div class="mini-stat-label" data-i18n="hero.stat2Label">كفاءة البنية التحتية</div>
+              </div>
+              <div class="mini-stat-item">
+                <div class="mini-stat-val" data-i18n="hero.stat3Val">6 عملات</div>
+                <div class="mini-stat-label" data-i18n="hero.stat3Label">العملات المدعومة</div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Hero Visual Column (Interactive 3D Crypto Node Display) -->
+          <div class="hero-visual-wrapper">
+            
+            <div class="float-badge float-badge-1">
+              <div class="badge-icon-box badge-gold">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                </svg>
+              </div>
+              <div class="badge-text-group">
+                <span class="badge-label" data-i18n="hero.stat1Label">سنوات خبرة في الكريبتو</span>
+                <span class="badge-val">13+ Years Experience</span>
+              </div>
+            </div>
+
+            <div class="float-badge float-badge-2">
+              <div class="badge-icon-box badge-cyan">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                  <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                  <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                  <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                </svg>
+              </div>
+              <div class="badge-text-group">
+                <span class="badge-label">Mining Infrastructure</span>
+                <span class="badge-val">Antminer Hydro & Air Rigs</span>
+              </div>
+            </div>
+
+            <div class="crypto-node-card">
+              <div class="node-card-header">
+                <div class="node-chip">
+                  <span class="chip-dot"></span>
+                  <span data-i18n="hero.cardBadge">عقدة تعدين نشطة 24/7</span>
+                </div>
+                <div class="node-network-tag">SHA-256 / SCRYPT / KAS</div>
+              </div>
+
+              <div class="node-core-display">
+                <div class="core-hologram">
+                  <div class="hologram-ring ring-outer"></div>
+                  <div class="hologram-ring ring-inner"></div>
+                  <div class="core-symbol">
+                    <svg viewBox="0 0 32 32" fill="currentColor">
+                      <path d="M23.188 14.156c0.5-1.125 0.313-2.688-0.875-3.5-1-0.688-2.625-0.813-4.313-0.75v-3.906h-2.5v3.813c-0.625 0-1.25 0-1.875 0.063v-3.875h-2.5v3.969c-0.625 0.031-1.25 0.063-1.875 0.125h-3.25v2.75h1.75c0.688 0 1.063 0.375 1.063 1v10.375c0 0.625-0.375 1-1.063 1h-1.75v2.75h3.188c0.625 0.031 1.25 0.063 1.938 0.063v3.938h2.5v-3.875c0.625 0 1.25 0 1.875-0.031v3.906h2.5v-3.969c4.375-0.313 7.375-1.75 7.188-6.188-0.063-2.188-1.313-3.375-3.063-4m-6.688-4.5c1.875 0 4.188 0.375 4.188 2.375 0 2-2.313 2.375-4.188 2.375h-2.938v-4.75h2.938m0.625 11.5c-2.125 0-4.688-0.375-4.688-2.625 0-2.25 2.563-2.625 4.688-2.625h3.438c0 2.25-1.313 5.25-3.438 5.25z"/>
+                    </svg>
+                  </div>
+                </div>
+                <h3 class="node-title-main">TOPTEAM EcoNode</h3>
+                <p class="node-subtitle-status" data-i18n="hero.liveStatus">متصل بالشبكة العالمية</p>
+              </div>
+
+              <div class="node-metrics-stack">
+                <div class="metric-bar-item">
+                  <div class="metric-bar-left">
+                    <div class="metric-bar-icon">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                      </svg>
+                    </div>
+                    <span class="metric-bar-name">Global Hashrate Rate</span>
+                  </div>
+                  <span class="metric-bar-val">580+ EH/s Active</span>
+                </div>
+
+                <div class="metric-bar-item">
+                  <div class="metric-bar-left">
+                    <div class="metric-bar-icon" style="background: rgba(16, 185, 129, 0.1); color: var(--accent-emerald);">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                      </svg>
+                    </div>
+                    <span class="metric-bar-name" data-i18n="hero.nodeSecurity">حماية وتشفير عالي المستوى</span>
+                  </div>
+                  <span class="metric-bar-val" style="color: var(--accent-emerald);">Verified 100%</span>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 2. SECTION: خبرة، معرفة، واستكشاف للفرص الرقمية (INTRO EXPERIENCE) -->
+    <section class="section-intro" id="intro-experience">
+      <div class="container">
+        
+        <div class="section-header">
+          <div class="section-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+            <span data-i18n="intro.badge">خبرة وريادة</span>
+          </div>
+          
+          <h2 class="section-title" data-i18n="intro.title">
+            خبرة، معرفة، واستكشاف للفرص الرقمية
+          </h2>
+
+          <p class="section-desc" data-i18n="intro.description">
+            نركز على تبسيط عالم العملات الرقمية والتعدين والبلوكشين، ومساعدة المهتمين على فهم هذا المجال بصورة أوضح، مع متابعة المشاريع والتطورات الجديدة المرتبطة به.
+          </p>
+        </div>
+
+        <div class="intro-cards-grid">
+          
+          <div class="feature-card">
+            <div class="card-icon-wrapper icon-gold">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+            </div>
+            <h3 class="card-title" data-i18n="intro.card1Title">تبسيط عالم الكريبتو</h3>
+            <p class="card-desc" data-i18n="intro.card1Desc">
+              تحويل المفاهيم التقنية المعقدة في البلوكشين والتعدين إلى خطوات واضحة ومفهومة تناسب الجميع.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="card-icon-wrapper icon-cyan">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+              </svg>
+            </div>
+            <h3 class="card-title" data-i18n="intro.card2Title">استكشاف الفرص والمشاريع</h3>
+            <p class="card-desc" data-i18n="intro.card2Desc">
+              دراسة ومتابعة أحدث مشاريع التعدين السحابي والبنية التحتية ذات الموثوقية العالية.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="card-icon-wrapper icon-emerald">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+            </div>
+            <h3 class="card-title" data-i18n="intro.card3Title">خبرة تراكمية تفوق 13 عامًا</h3>
+            <p class="card-desc" data-i18n="intro.card3Desc">
+              رؤية متعمقة مبنية على مواكبة تطور البيتكوين وتقنيات السجلات الموزعة منذ بداياتها الأولى.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="card-icon-wrapper icon-purple">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                <line x1="6" y1="18" x2="6.01" y2="18"></line>
+              </svg>
+            </div>
+            <h3 class="card-title" data-i18n="intro.card4Title">بنية تحتية ومتابعة تقنية</h3>
+            <p class="card-desc" data-i18n="intro.card4Desc">
+              الاطلاع على أحدث أجهزة التعدين ومراكز البيانات العالمية ومعايير استهلاك الطاقة المستدامة.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Metric Counter Bar -->
+        <div class="metrics-strip">
+          <div class="metric-strip-item">
+            <div class="metric-number">+13</div>
+            <div class="metric-text" data-i18n="stats.experience">سنوات من الخبرة والريادة</div>
+          </div>
+          <div class="metric-strip-item">
+            <div class="metric-number">6+</div>
+            <div class="metric-text" data-i18n="stats.currencies">عملات رئيسية قابلة للتعدين</div>
+          </div>
+          <div class="metric-strip-item">
+            <div class="metric-number">100%</div>
+            <div class="metric-text" data-i18n="stats.transparency">شفافية ومصداقية كاملة</div>
+          </div>
+          <div class="metric-strip-item">
+            <div class="metric-number">24/7</div>
+            <div class="metric-text" data-i18n="stats.support">توجيه واستشارات مستمرة</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- 3. EDUCATIONAL SECTION: ما هي العملات؟ ما هو البلوكشين؟ ما هو التعدين؟ -->
+    <section class="section-edu" id="edu-section">
+      <div class="container">
+        
+        <div class="section-header">
+          <div class="section-badge badge-gold">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            </svg>
+            <span data-i18n="edu.badge">دليل المبتدئ الشامل</span>
+          </div>
+
+          <h2 class="section-title" data-i18n="edu.mainTitle">المفاهيم الأساسية لعالم الكريبتو والبلوكشين</h2>
+          <p class="section-desc" data-i18n="edu.mainDesc">
+            فهم الأسس التقنية هو الخطوة الأولى لاكتشاف الإمكانيات الهائلة للثورة المالية الرقمية.
+          </p>
+        </div>
+
+        <div class="edu-cards-container">
+          
+          <!-- Card 1: What is Crypto? -->
+          <div class="edu-card">
+            <div class="edu-card-top">
+              <div class="edu-icon-badge icon-gold">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
+                  <path d="M12 18V6"></path>
+                </svg>
+              </div>
+              <h3 class="edu-title" data-i18n="edu.q1Title">ما هي العملات الرقمية؟</h3>
+            </div>
+            <p class="edu-text" data-i18n="edu.q1Desc">
+              أصول مالية رقمية أو افتراضية مشفرة، لا تعتمد على جهة مركزية أو بنوك وسيطة، وتتيح انتقال القيمة عالمياً بشكل فوري وآمن عبر الإنترنت.
+            </p>
+            <ul class="edu-keypoints">
+              <li class="edu-keypoint-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span data-i18n="edu.q1Point1">لامركزية كاملة ولا تخضع للتحكم الفردي</span>
+              </li>
+              <li class="edu-keypoint-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span data-i18n="edu.q1Point2">أمان فائق بفضل خوارزميات التشفير</span>
+              </li>
+              <li class="edu-keypoint-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span data-i18n="edu.q1Point3">معاملات عابرة للحدود برسوم منخفضة</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Card 2: What is Blockchain? -->
+          <div class="edu-card">
+            <div class="edu-card-top">
+              <div class="edu-icon-badge icon-cyan">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                </svg>
+              </div>
+              <h3 class="edu-title" data-i18n="edu.q2Title">ما هي تقنية البلوكشين؟</h3>
+            </div>
+            <p class="edu-text" data-i18n="edu.q2Desc">
+              سجل رقمي مشترك وموزع على آلاف الحواسيب حول العالم، يسجل كل معاملة في كتلة مشفرة ومرتبطة بسلسلة غير قابلة للتعديل أو التزوير.
+            </p>
+            <ul class="edu-keypoints">
+              <li class="edu-keypoint-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span data-i18n="edu.q2Point1">سجل رقمي غير قابل للتلاعب أو الحذف</span>
+              </li>
+              <li class="edu-keypoint-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span data-i18n="edu.q2Point2">موزع بين المشاركين (Decentralized)</span>
+              </li>
+              <li class="edu-keypoint-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span data-i18n="edu.q2Point3">شفافية كاملة ومصداقية برمجية</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Card 3: What is Crypto Mining? -->
+          <div class="edu-card">
+            <div class="edu-card-top">
+              <div class="edu-icon-badge icon-emerald">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+              </div>
+              <h3 class="edu-title" data-i18n="edu.q3Title">ما هو تعدين العملات؟</h3>
+            </div>
+            <p class="edu-text" data-i18n="edu.q3Desc">
+              العملية الحسابية التي تقوم فيها أجهزة حاسوبية فائقة القوة بحل معادلات رياضية معقدة لتوثيق المعاملات وحماية شبكة البلوكشين وإصدار عملات جديدة.
+            </p>
+            <ul class="edu-keypoints">
+              <li class="edu-keypoint-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span data-i18n="edu.q3Point1">تأمين وحماية الشبكة من الهجمات</span>
+              </li>
+              <li class="edu-keypoint-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span data-i18n="edu.q3Point2">التحقق من صحة المعاملات وتوثيقها</span>
+              </li>
+              <li class="edu-keypoint-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span data-i18n="edu.q3Point3">الحصول على مكافآت من العملات المعدنة</span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- 4. SUPPORTED COINS SECTION (قسم العملات الـ 6) -->
+    <section class="section-coins" id="coins-section">
+      <div class="container">
+        
+        <div class="section-header">
+          <div class="section-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+            <span data-i18n="coins.badge">العملات المدعومة</span>
+          </div>
+
+          <h2 class="section-title" data-i18n="coins.title">العملات الرقمية القابلة للتعدين</h2>
+          <p class="section-desc" data-i18n="coins.desc">
+            نركز على أقوى العملات الرقمية المعتمدة على إثبات العمل (Proof of Work) ذات البنية القوية والطلب العالمي.
+          </p>
+        </div>
+
+        <div class="coins-grid">
+          
+          <!-- 1. Bitcoin (BTC) -->
+          <div class="coin-card">
+            <div class="coin-header">
+              <div class="coin-logo-circle coin-logo-btc">
+                <svg viewBox="0 0 32 32">
+                  <path d="M23.188 14.156c0.5-1.125 0.313-2.688-0.875-3.5-1-0.688-2.625-0.813-4.313-0.75v-3.906h-2.5v3.813c-0.625 0-1.25 0-1.875 0.063v-3.875h-2.5v3.969c-0.625 0.031-1.25 0.063-1.875 0.125h-3.25v2.75h1.75c0.688 0 1.063 0.375 1.063 1v10.375c0 0.625-0.375 1-1.063 1h-1.75v2.75h3.188c0.625 0.031 1.25 0.063 1.938 0.063v3.938h2.5v-3.875c0.625 0 1.25 0 1.875-0.031v3.906h2.5v-3.969c4.375-0.313 7.375-1.75 7.188-6.188-0.063-2.188-1.313-3.375-3.063-4m-6.688-4.5c1.875 0 4.188 0.375 4.188 2.375 0 2-2.313 2.375-4.188 2.375h-2.938v-4.75h2.938m0.625 11.5c-2.125 0-4.688-0.375-4.688-2.625 0-2.25 2.563-2.625 4.688-2.625h3.438c0 2.25-1.313 5.25-3.438 5.25z"/>
+                </svg>
+              </div>
+              <div class="coin-name-group">
+                <h3 class="coin-name" data-i18n="coins.btcName">Bitcoin (BTC)</h3>
+                <span class="coin-algo-badge">SHA-256</span>
+              </div>
+            </div>
+            <p class="coin-desc" data-i18n="coins.btcDesc">
+              العملة الرقمية الأولى عالمياً والذهب الرقمي، الركيزة الأساسية لاقتصاد الكريبتو.
+            </p>
+            <div class="coin-footer-info">
+              <span data-i18n="coins.btcAlgo">خوارزمية SHA-256 | الرائد عالمياً</span>
+            </div>
+          </div>
+
+          <!-- 2. Bitcoin Cash (BCH) -->
+          <div class="coin-card">
+            <div class="coin-header">
+              <div class="coin-logo-circle coin-logo-bch">
+                <svg viewBox="0 0 32 32">
+                  <path d="M22.5 13.5c0.4-0.9 0.2-2.1-0.7-2.8-0.8-0.5-2.1-0.6-3.4-0.6v-3.1h-2v3h-1.5v-3.1h-2v3.2h-1.5h-2.6v2.2h1.4c0.5 0 0.8 0.3 0.8 0.8v8.3c0 0.5-0.3 0.8-0.8 0.8h-1.4v2.2h2.5c0.5 0 1 0 1.5 0v3.1h2v-3.1c0.5 0 1 0 1.5 0v3.1h2v-3.2c3.5-0.2 5.9-1.4 5.7-4.9 0-1.7-1-2.7-2.4-3.2m-5.3-3.6c1.5 0 3.3 0.3 3.3 1.9 0 1.6-1.8 1.9-3.3 1.9h-2.3v-3.8h2.3m0.5 9.2c-1.7 0-3.7-0.3-3.7-2.1 0-1.8 2-2.1 3.7-2.1h2.7c0 1.8-1 4.2-2.7 4.2z"/>
+                </svg>
+              </div>
+              <div class="coin-name-group">
+                <h3 class="coin-name" data-i18n="coins.bchName">Bitcoin Cash (BCH)</h3>
+                <span class="coin-algo-badge">SHA-256</span>
+              </div>
+            </div>
+            <p class="coin-desc" data-i18n="coins.bchDesc">
+              تفرع يركز على زيادة سعة الكتل لتسريع المعاملات اليومية وخفض الرسوم.
+            </p>
+            <div class="coin-footer-info">
+              <span data-i18n="coins.bchAlgo">خوارزمية SHA-256 | معاملات فائقة السرعة</span>
+            </div>
+          </div>
+
+          <!-- 3. Litecoin (LTC) -->
+          <div class="coin-card">
+            <div class="coin-header">
+              <div class="coin-logo-circle coin-logo-ltc">
+                <svg viewBox="0 0 32 32">
+                  <path d="M12.5 6h4.5l-2.2 8.5h3.8l-0.8 3h-3.8l-2 7.5h10.5l-0.8 3H8l6-22h-1.5z"/>
+                </svg>
+              </div>
+              <div class="coin-name-group">
+                <h3 class="coin-name" data-i18n="coins.ltcName">Litecoin (LTC)</h3>
+                <span class="coin-algo-badge">Scrypt</span>
+              </div>
+            </div>
+            <p class="coin-desc" data-i18n="coins.ltcDesc">
+              الفضة الرقمية بالنسبة للبيتكوين، يتميز بزمن توليد كتل أسرع وتكاليف منخفضة.
+            </p>
+            <div class="coin-footer-info">
+              <span data-i18n="coins.ltcAlgo">خوارزمية Scrypt | كفاءة تشغيلية مثبتة</span>
+            </div>
+          </div>
+
+          <!-- 4. Dogecoin (DOGE) -->
+          <div class="coin-card">
+            <div class="coin-header">
+              <div class="coin-logo-circle coin-logo-doge">
+                <svg viewBox="0 0 32 32">
+                  <path d="M11 7h6.5c4.5 0 7.5 2.8 7.5 9s-3 9-7.5 9H11V7zm4.2 3.8v10.4h2.2c2.4 0 3.8-1.7 3.8-5.2s-1.4-5.2-3.8-5.2h-2.2zM9 15h14v2H9z"/>
+                </svg>
+              </div>
+              <div class="coin-name-group">
+                <h3 class="coin-name" data-i18n="coins.dogeName">Dogecoin (DOGE)</h3>
+                <span class="coin-algo-badge">AuxPoW Scrypt</span>
+              </div>
+            </div>
+            <p class="coin-desc" data-i18n="coins.dogeDesc">
+              عملة مجتمعية واسعة الانتشار تتميز بسيولة عالية وسرعة نقل للأموال عالمياً.
+            </p>
+            <div class="coin-footer-info">
+              <span data-i18n="coins.dogeAlgo">تعدين مدمج Scrypt AuxPoW | شعبية عالمية</span>
+            </div>
+          </div>
+
+          <!-- 5. Kaspa (KAS) -->
+          <div class="coin-card">
+            <div class="coin-header">
+              <div class="coin-logo-circle coin-logo-kas">
+                <svg viewBox="0 0 32 32">
+                  <polygon points="16 3 28 9.5 28 22.5 16 29 4 22.5 4 9.5"/>
+                  <path d="M16 8v16M10 12l12 8M22 12l-12 8" stroke="#0c111d" stroke-width="2"/>
+                </svg>
+              </div>
+              <div class="coin-name-group">
+                <h3 class="coin-name" data-i18n="coins.kasName">Kaspa (KAS)</h3>
+                <span class="coin-algo-badge">kHeavyHash / GHOSTDAG</span>
+              </div>
+            </div>
+            <p class="coin-desc" data-i18n="coins.kasDesc">
+              بروتوكول BlockDAG الثوري، الأسرع في معالجة الكتل فورياً مع الحفاظ على اللامركزية.
+            </p>
+            <div class="coin-footer-info">
+              <span data-i18n="coins.kasAlgo">خوارزمية kHeavyHash | تقنية BlockDAG الحديثة</span>
+            </div>
+          </div>
+
+          <!-- 6. Zcash (ZEC) -->
+          <div class="coin-card">
+            <div class="coin-header">
+              <div class="coin-logo-circle coin-logo-zec">
+                <svg viewBox="0 0 32 32">
+                  <path d="M16 3c-7.18 0-13 5.82-13 13s5.82 13 13 13 13-5.82 13-13-5.82-13-13-13zm1 4v2h2v2h-4.5l-0.5 1 5.5 6.5v2.5h-2.5v2h-2v-2h-3v-2h4.5l0.5-1-5.5-6.5v-2.5h2.5v-2h2z"/>
+                </svg>
+              </div>
+              <div class="coin-name-group">
+                <h3 class="coin-name" data-i18n="coins.zecName">Zcash (ZEC)</h3>
+                <span class="coin-algo-badge">Equihash</span>
+              </div>
+            </div>
+            <p class="coin-desc" data-i18n="coins.zecDesc">
+              عملة رائدة تركز على الخصوصية وحماية المعاملات باستخدام براهين zk-SNARKs المشفرة.
+            </p>
+            <div class="coin-footer-info">
+              <span data-i18n="coins.zecAlgo">خوارزمية Equihash | خصوصية وأمان تشفيري</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- 5. HASHNET ECOSYSTEM SECTION (قسم مشروع HASHNET المتكامل) -->
+    <section class="section-hashnet hashnet-section" id="hashnet-section">
+      <div class="container">
+        
+        <div class="section-header">
+          <div class="section-badge badge-gold">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+            <span data-i18n="hashnet.badge">المشروع الرائد الموصى به</span>
+          </div>
+
+          <h2 class="section-title" data-i18n="hashnet.title">منظومة HashNet لتعدين العملات الرقمية</h2>
+          <p class="section-desc" data-i18n="hashnet.desc">
+            مشروع متكامل يقدم بنية تحتية متطورة تتيح لك الاستفادة من قوة التعدين السحابي ومراكز البيانات العالمية دون الحاجة لشراء أو صيانة الأجهزة بنفسك.
+          </p>
+        </div>
+
+        <div class="hashnet-block-container">
+          
+          <!-- HashNet Intro & Infrastructure -->
+          <div>
+            <h3 class="section-title" style="font-size: 1.6rem; margin-bottom: 1.5rem;" data-i18n="hashnet.infraTitle">البنية التحتية ومراكز البيانات</h3>
+            <p class="section-desc" style="text-align: start; margin-bottom: 2rem;" data-i18n="hashnet.infraDesc">
+              تعتمد HashNet على مزارع تعدين حديثة مزودة بأحدث أنظمة الطاقة النظيفة والتبريد الهوائي والمائي المتطور، مع فرق هندسية تعمل على مدار الساعة لصيانة الأجهزة وضمان تشغيل بنسبة 99.9%.
+            </p>
+
+            <div class="infra-grid">
+              <div class="infra-card">
+                <div class="infra-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+                </div>
+                <h4 class="infra-title" data-i18n="hashnet.infraItem1">مراكز بيانات Tier-3 مؤمنة</h4>
+              </div>
+
+              <div class="infra-card">
+                <div class="infra-icon" style="background: rgba(16, 185, 129, 0.12); color: var(--accent-emerald);">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                </div>
+                <h4 class="infra-title" data-i18n="hashnet.infraItem2">اعتماد على مصادر طاقة مستدامة</h4>
+              </div>
+
+              <div class="infra-card">
+                <div class="infra-icon" style="background: rgba(247, 147, 26, 0.12); color: var(--accent-gold);">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12a4 4 0 0 1 8 0"/></svg>
+                </div>
+                <h4 class="infra-title" data-i18n="hashnet.infraItem3">أنظمة تبريد ذكية لرفع الكفاءة</h4>
+              </div>
+
+              <div class="infra-card">
+                <div class="infra-icon" style="background: rgba(168, 85, 247, 0.12); color: var(--accent-purple);">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                </div>
+                <h4 class="infra-title" data-i18n="hashnet.infraItem4">مراقبة آلية وتحديثات مستمرة</h4>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mining Hardware Rigs Showcase -->
+          <div>
+            <h3 class="section-title" style="font-size: 1.6rem; margin-bottom: 0.75rem;" data-i18n="hashnet.hardwareTitle">أحدث أجهزة التعدين (Antminer Rigs)</h3>
+            <p class="section-desc" style="text-align: start; margin-bottom: 2rem;" data-i18n="hashnet.hardwareDesc">
+              استخدام أحدث أجيال معالجات الـ ASIC المتخصصة لضمان أعلى معدل هاش لكل واط مستهلك.
+            </p>
+
+            <div class="hardware-grid">
+              
+              <!-- Rig 1: Antminer S21 -->
+              <div class="hardware-card">
+                <span class="hardware-badge">SHA-256 / BTC</span>
+                <h4 class="hardware-title" data-i18n="hashnet.antminer1">Antminer S21 Pro</h4>
+                <ul class="hardware-specs-list">
+                  <li class="hardware-spec-row">
+                    <span>العملة المستهدفة:</span>
+                    <span>Bitcoin (BTC) / BCH</span>
+                  </li>
+                  <li class="hardware-spec-row">
+                    <span>معدل الهاش:</span>
+                    <span>234 TH/s</span>
+                  </li>
+                  <li class="hardware-spec-row">
+                    <span>كفاءة الطاقة:</span>
+                    <span>15.0 J/TH</span>
+                  </li>
+                  <li class="hardware-spec-row">
+                    <span>نظام التبريد:</span>
+                    <span>Hydro & Dual Fans</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Rig 2: Antminer L9 -->
+              <div class="hardware-card">
+                <span class="hardware-badge" style="border-color: rgba(0, 210, 255, 0.4); color: var(--accent-cyan);">Scrypt / LTC + DOGE</span>
+                <h4 class="hardware-title" data-i18n="hashnet.antminer2">Antminer L9</h4>
+                <ul class="hardware-specs-list">
+                  <li class="hardware-spec-row">
+                    <span>العملة المستهدفة:</span>
+                    <span>Litecoin + Dogecoin</span>
+                  </li>
+                  <li class="hardware-spec-row">
+                    <span>معدل الهاش:</span>
+                    <span>16 GH/s</span>
+                  </li>
+                  <li class="hardware-spec-row">
+                    <span>كفاءة الطاقة:</span>
+                    <span>0.21 J/M</span>
+                  </li>
+                  <li class="hardware-spec-row">
+                    <span>نوع التعدين:</span>
+                    <span>AuxPoW Merge Mining</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Rig 3: Antminer KS5 -->
+              <div class="hardware-card">
+                <span class="hardware-badge" style="border-color: rgba(16, 185, 129, 0.4); color: var(--accent-emerald);">kHeavyHash / KAS</span>
+                <h4 class="hardware-title" data-i18n="hashnet.antminer3">Antminer KS5 Pro</h4>
+                <ul class="hardware-specs-list">
+                  <li class="hardware-spec-row">
+                    <span>العملة المستهدفة:</span>
+                    <span>Kaspa (KAS)</span>
+                  </li>
+                  <li class="hardware-spec-row">
+                    <span>معدل الهاش:</span>
+                    <span>21 TH/s</span>
+                  </li>
+                  <li class="hardware-spec-row">
+                    <span>كفاءة الطاقة:</span>
+                    <span>150 J/T</span>
+                  </li>
+                  <li class="hardware-spec-row">
+                    <span>الجيل:</span>
+                    <span>High-Rate BlockDAG</span>
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- 5-Step Process: How it works -->
+          <div>
+            <h3 class="section-title" style="font-size: 1.6rem; margin-bottom: 0.75rem;" data-i18n="hashnet.howItWorksTitle">كيف يعمل التعدين في HashNet؟</h3>
+            <p class="section-desc" style="text-align: start; margin-bottom: 2rem;" data-i18n="hashnet.howItWorksDesc">
+              دورة تعدين واضحة ومبسطة من لحظة اختيار الباقة حتى احتساب النتائج:
+            </p>
+
+            <div class="process-flow-container">
+              <div class="process-step-card">
+                <div class="step-number-bubble">1</div>
+                <h4 class="step-card-title" data-i18n="hashnet.step1">1. اختيار الباقة</h4>
+                <p class="step-card-desc" data-i18n="hashnet.step1Desc">تحديد مستوى قوة التعدين المناسب لك.</p>
+              </div>
+
+              <div class="process-step-card">
+                <div class="step-number-bubble">2</div>
+                <h4 class="step-card-title" data-i18n="hashnet.step2">2. حجز قوة الهاش</h4>
+                <p class="step-card-desc" data-i18n="hashnet.step2Desc">تخصيص حصة فعلية من الأجهزة العاملة.</p>
+              </div>
+
+              <div class="process-step-card">
+                <div class="step-number-bubble">3</div>
+                <h4 class="step-card-title" data-i18n="hashnet.step3">3. تشغيل الأجهزة</h4>
+                <p class="step-card-desc" data-i18n="hashnet.step3Desc">ربط الحصة بأحواض التعدين العالمية 24/7.</p>
+              </div>
+
+              <div class="process-step-card">
+                <div class="step-number-bubble">4</div>
+                <h4 class="step-card-title" data-i18n="hashnet.step4">4. التعدين والتوثيق</h4>
+                <p class="step-card-desc" data-i18n="hashnet.step4Desc">مشاركة الأجهزة في حل كتل الشبكة وتأمينها.</p>
+              </div>
+
+              <div class="process-step-card">
+                <div class="step-number-bubble">5</div>
+                <h4 class="step-card-title" data-i18n="hashnet.step5">5. احتساب النتائج</h4>
+                <p class="step-card-desc" data-i18n="hashnet.step5Desc">تسجيل عوائد التعدين في حسابك بشكل دوري.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Onboarding 4 Steps & Register Now CTA -->
+          <div class="onboarding-wrapper">
+            <div>
+              <h3 class="section-title" style="font-size: 1.7rem; margin-bottom: 0.5rem;" data-i18n="hashnet.howToStartTitle">كيف تبدأ؟ خطوات التسجيل السريعة</h3>
+              <p class="section-desc" style="text-align: start;" data-i18n="hashnet.howToStartDesc">أربع خطوات بسيطة تفصلك عن الانضمام لمنظومة التعدين:</p>
+            </div>
+
+            <div class="onboarding-steps-grid">
+              <div class="onboard-item">
+                <span class="onboard-index">01</span>
+                <h4 class="onboard-title" data-i18n="hashnet.regStep1">1 — التسجيل في المنصة</h4>
+                <p class="onboard-desc" data-i18n="hashnet.regStep1Desc">إنشاء حسابك الرسمي وتأمين بيانات الدخول.</p>
+              </div>
+
+              <div class="onboard-item">
+                <span class="onboard-index">02</span>
+                <h4 class="onboard-title" data-i18n="hashnet.regStep2">2 — اختيار الباقة المناسبة</h4>
+                <p class="onboard-desc" data-i18n="hashnet.regStep2Desc">تحديد القيمة وقوة التعدين التي ترغب بها.</p>
+              </div>
+
+              <div class="onboard-item">
+                <span class="onboard-index">03</span>
+                <h4 class="onboard-title" data-i18n="hashnet.regStep3">3 — تفعيل قوة التعدين</h4>
+                <p class="onboard-desc" data-i18n="hashnet.regStep3Desc">بدء تشغيل حصتك التعدينية في مزارع HashNet فوراً.</p>
+              </div>
+
+              <div class="onboard-item">
+                <span class="onboard-index">04</span>
+                <h4 class="onboard-title" data-i18n="hashnet.regStep4">4 — متابعة النتائج</h4>
+                <p class="onboard-desc" data-i18n="hashnet.regStep4Desc">مراقبة أداء الأجهزة وتفاصيل التعدين من لوحة التحكم.</p>
+              </div>
+            </div>
+
+            <div class="onboard-cta-center">
+              <a href="https://app.hashnet.ai/Topteam2" target="_blank" rel="noopener noreferrer" class="btn-primary btn-register-hashnet btn-hashnet-reg" data-i18n="hashnet.registerNowBtn">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="8.5" cy="7" r="4"></circle>
+                  <line x1="20" y1="8" x2="20" y2="14"></line>
+                  <line x1="23" y1="11" x2="17" y2="11"></line>
+                </svg>
+                <span>سجل الآن في HashNet</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- 6. PACKAGES SECTION (الباقات الـ 5: $150, $500, $1000, $2500, $5000) -->
+    <section class="section-packages" id="packages-section">
+      <div class="container">
+        
+        <div class="section-header">
+          <div class="section-badge badge-gold">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+            </svg>
+            <span data-i18n="packages.badge">باقات التعدين</span>
+          </div>
+
+          <h2 class="section-title" data-i18n="packages.title">اختر باقة التعدين المناسبة لك</h2>
+          <p class="section-desc" data-i18n="packages.desc">
+            باقات متنوعة تناسب مختلف المستويات، تمنحك قوة تعدين حقيقية مدعومة ببنية تحتية متكاملة.
+          </p>
+        </div>
+
+        <div class="packages-grid">
+          
+          <!-- Package 1: $150 -->
+          <div class="package-card">
+            <h3 class="package-name" data-i18n="packages.plan150Title">باقة 150$</h3>
+            <div class="package-price-wrap">
+              <span class="package-price-currency">$</span>
+              <span class="package-price-amount">150</span>
+            </div>
+            <div class="package-hashpower-box">
+              <div class="hashpower-label" data-i18n="packages.hashpowerLabel">قوة التعدين التقديرية</div>
+              <div class="hashpower-value">5 TH/s</div>
+            </div>
+            <ul class="package-features-list">
+              <li class="package-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span data-i18n="packages.feature1">تشغيل وصيانة الأجهزة شاملة</span>
+              </li>
+              <li class="package-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span data-i18n="packages.feature2">ربط بأفضل أحواض التعدين</span>
+              </li>
+              <li class="package-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span data-i18n="packages.feature3">لوحة تحكم للمتابعة الفورية</span>
+              </li>
+              <li class="package-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span data-i18n="packages.featureSupport">دعم فني مستمر</span>
+              </li>
+            </ul>
+            <a href="https://app.hashnet.ai/Topteam2" target="_blank" rel="noopener noreferrer" class="btn-secondary btn-package-select" data-package-id="plan150" data-i18n="packages.choosePlanBtn">اختر هذه الباقة وسجل</a>
+          </div>
+
+          <!-- Package 2: $500 -->
+          <div class="package-card">
+            <h3 class="package-name" data-i18n="packages.plan500Title">باقة 500$</h3>
+            <div class="package-price-wrap">
+              <span class="package-price-currency">$</span>
+              <span class="package-price-amount">500</span>
+            </div>
+            <div class="package-hashpower-box">
+              <div class="hashpower-label" data-i18n="packages.hashpowerLabel">قوة التعدين التقديرية</div>
+              <div class="hashpower-value">18 TH/s</div>
+            </div>
+            <ul class="package-features-list">
+              <li class="package-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span data-i18n="packages.feature1">تشغيل وصيانة الأجهزة شاملة</span>
+              </li>
+              <li class="package-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span data-i18n="packages.feature2">ربط بأفضل أحواض التعدين</span>
+              </li>
+              <li class="package-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span data-i18n="packages.feature3">لوحة تحكم للمتابعة الفورية</span>
+              </li>
+              <li class="package-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span data-i18n="packages.featureSupport">دعم فني مستمر</span>
+              </li>
+            </ul>
+            <a href="https://app.hashnet.ai/Topteam2" target="_blank" rel="noopener noreferrer" class="btn-secondary btn-package-select" data-package-id="plan500" data-i18n="packages.choosePlanBtn">اختر هذه الباقة وسجل</a>
+          </div>
+
+          <!-- Package 3: $1,000 (Popular Highlight) -->
+          <div class="package-card popular">
+            <div class="package-ribbon" data-i18n="packages.popularBadge">الباقة الأكثر طلباً</div>
+            <h3 class="package-name" data-i18n="packages.plan1000Title">باقة 1,000$</h3>
+            <div class="package-price-wrap">
+              <span class="package-price-currency">$</span>
+              <span class="package-price-amount">1,000</span>
+            </div>
+            <div class="package-hashpower-box">
+              <div class="hashpower-label" data-i18n="packages.hashpowerLabel">قوة التعدين التقديرية</div>
+              <div class="hashpower-value" style="color: var(--accent-gold);">40 TH/s</div>
+            </div>
+            <ul class="package-features-list">
+              <li class="package-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span data-i18n="packages.feature1">تشغيل وصيانة الأجهزة شاملة</span>
+              </li>
+              <li class="package-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span data-i18n="packages.feature2">ربط بأفضل أحواض التعدين</span>
+              </li>
+              <li class="package-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span data-i18n="packages.feature3">لوحة تحكم للمتابعة الفورية</span>
+              </li>
+              <li class="package-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span data-i18n="packages.featurePrioritySupport">دعم فني ذو أولوية</span>
+              </li>
+            </ul>
+            <a href="https://app.hashnet.ai/Topteam2" target="_blank" rel="noopener noreferrer" class="btn-primary btn-package-select" data-package-id="plan1000" data-i18n="packages.choosePlanBtn">اختر هذه الباقة وسجل</a>
+          </div>
+
+          <!-- Package 4: $2,500 -->
+          <div class="package-card">
+            <h3 class="package-name" data-i18n="packages.plan2500Title">باقة 2,500$</h3>
+            <div class="package-price-wrap">
+              <span class="package-price-currency">$</span>
+              <span class="package-price-amount">2,500</span>
+            </div>
+            <div class="package-hashpower-box">
+              <div class="hashpower-label" data-i18n="packages.hashpowerLabel">قوة التعدين التقديرية</div>
+              <div class="hashpower-value">110 TH/s</div>
+            </div>
+            <ul class="package-features-list">
+              <li class="package-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span data-i18n="packages.feature1">تشغيل وصيانة الأجهزة شاملة</span>
+              </li>
+              <li class="package-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span data-i18n="packages.feature2">ربط بأفضل أحواض التعدين</span>
+              </li>
+              <li class="package-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span data-i18n="packages.feature3">لوحة تحكم للمتابعة الفورية</span>
+              </li>
+              <li class="package-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span data-i18n="packages.featureVipSupport">دعم فني VIP مباشر</span>
+              </li>
+            </ul>
+            <a href="https://app.hashnet.ai/Topteam2" target="_blank" rel="noopener noreferrer" class="btn-secondary btn-package-select" data-package-id="plan2500" data-i18n="packages.choosePlanBtn">اختر هذه الباقة وسجل</a>
+          </div>
+
+          <!-- Package 5: $5,000 -->
+          <div class="package-card">
+            <h3 class="package-name" data-i18n="packages.plan5000Title">باقة 5,000$</h3>
+            <div class="package-price-wrap">
+              <span class="package-price-currency">$</span>
+              <span class="package-price-amount">5,000</span>
+            </div>
+            <div class="package-hashpower-box">
+              <div class="hashpower-label" data-i18n="packages.hashpowerLabel">قوة التعدين التقديرية</div>
+              <div class="hashpower-value" style="color: var(--accent-emerald);">250 TH/s</div>
+            </div>
+            <ul class="package-features-list">
+              <li class="package-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span data-i18n="packages.feature1">تشغيل وصيانة الأجهزة شاملة</span>
+              </li>
+              <li class="package-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span data-i18n="packages.feature2">ربط بأفضل أحواض التعدين</span>
+              </li>
+              <li class="package-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span data-i18n="packages.feature3">لوحة تحكم للمتابعة الفورية</span>
+              </li>
+              <li class="package-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span data-i18n="packages.featureDedicatedManager">مدير حساب وتوجيه مخصص</span>
+              </li>
+            </ul>
+            <a href="https://app.hashnet.ai/Topteam2" target="_blank" rel="noopener noreferrer" class="btn-secondary btn-package-select" data-package-id="plan5000" data-i18n="packages.choosePlanBtn">اختر هذه الباقة وسجل</a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- 7. CLOUD MINING CONCEPT & TRANSPARENCY SECTION -->
+    <section class="section-concept" id="mining-concept-section">
+      <div class="container">
+        
+        <div class="concept-grid">
+          
+          <div class="concept-text-col">
+            <div class="section-badge badge-emerald">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+              <span data-i18n="miningConcept.badge">مفهوم التعدين والشفافية</span>
+            </div>
+
+            <h2 class="section-title" data-i18n="miningConcept.title">امتلك حصة من قوة التعدين دون تعقيدات</h2>
+            
+            <p data-i18n="miningConcept.p1">
+              التعدين السحابي عبر TOPTEAM ومشروع HashNet يتيح لك امتلاك حصة مباشرة من قوة التعدين (Hashrate) دون الحاجة لشراء معدات باهظة الثمن، أو دفع فواتير كهرباء مرتفعة، أو تحمل تكاليف الصيانة وتبريد الأجهزة في منزلك.
+            </p>
+
+            <div class="transparency-alert-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+              <div class="transparency-alert-text" data-i18n="miningConcept.p2">
+                نحن نؤمن بالشفافية الكاملة: جميع مؤشرات التعدين وأرقام الأداء هي تقديرية وتخضع مباشرة لصعوبة شبكة البلوكشين العالمية، وتقلبات أسعار العملات، وأداء الأجهزة. لا يوجد أي عائد مضمون، ونجاح التعدين يعتمد على كفاءة البنية التحتية والتشغيل المستمر.
+              </div>
+            </div>
+          </div>
+
+          <div class="concept-cards-stack">
+            <div class="concept-mini-card">
+              <div class="card-icon-wrapper icon-gold" style="width: 48px; height: 48px;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+              </div>
+              <div>
+                <h4 style="font-size: 1.1rem; color: #fff; font-weight: 700;" data-i18n="miningConcept.card1Title">دون تكاليف صيانة شخصية</h4>
+                <p style="font-size: 0.88rem; color: var(--text-secondary);" data-i18n="miningConcept.card1Desc">فريق هندسي متخصص يتولى إصلاح وتحديث الأجهزة 24/7.</p>
+              </div>
+            </div>
+
+            <div class="concept-mini-card">
+              <div class="card-icon-wrapper icon-cyan" style="width: 48px; height: 48px;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+              </div>
+              <div>
+                <h4 style="font-size: 1.1rem; color: #fff; font-weight: 700;" data-i18n="miningConcept.card2Title">طاقة كهربائية مستدامة ورخيصة</h4>
+                <p style="font-size: 0.88rem; color: var(--text-secondary);" data-i18n="miningConcept.card2Desc">مراكز البيانات مقامة في مناطق ذات تكلفة طاقة منخفضة وتبريد طبيعي.</p>
+              </div>
+            </div>
+
+            <div class="concept-mini-card">
+              <div class="card-icon-wrapper icon-emerald" style="width: 48px; height: 48px;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              </div>
+              <div>
+                <h4 style="font-size: 1.1rem; color: #fff; font-weight: 700;" data-i18n="miningConcept.card3Title">شفافية ومصداقية تامة</h4>
+                <p style="font-size: 0.88rem; color: var(--text-secondary);" data-i18n="miningConcept.card3Desc">بيانات حقيقية للأجهزة وحصص التعدين دون وعود أو ضمانات وهمية.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- 8. BITCOIN LIVE REAL-TIME SECTION -->
+    <section class="section-live-btc" id="live-btc-section">
+      <div class="container">
+        
+        <div class="section-header">
+          <div class="section-badge badge-emerald">
+            <span class="live-pulse-green"></span>
+            <span data-i18n="liveBtc.badge">البيانات المباشرة للأسواق</span>
+          </div>
+
+          <h2 class="section-title" data-i18n="liveBtc.title">مؤشرات البيتكوين الحية (Bitcoin Live)</h2>
+          <p class="section-desc" data-i18n="liveBtc.desc">
+            متابعة لحظية ومباشرة لحركة البيتكوين في الأسواق العالمية عبر واجهات API الحقيقية.
+          </p>
+        </div>
+
+        <div class="btc-live-wrapper">
+          <div class="btc-live-header">
+            <div class="btc-live-tag">
+              <span class="live-pulse-green"></span>
+              <span data-i18n="liveBtc.liveTicker">محدث مباشرة من الأسواق العالمية</span>
+            </div>
+            <div class="btc-live-timestamp">
+              <span data-i18n="liveBtc.lastUpdated">آخر تحديث:</span>
+              <span id="btcLiveTimestamp">Live Data</span>
+            </div>
+          </div>
+
+          <div class="btc-stats-grid">
+            
+            <div class="btc-stat-card">
+              <span class="btc-stat-title" data-i18n="liveBtc.btcPrice">سعر البيتكوين (BTC/USD)</span>
+              <div class="btc-stat-value" id="btcLivePrice" data-i18n="liveBtc.fetching">جاري جلب البيانات الحية...</div>
+            </div>
+
+            <div class="btc-stat-card">
+              <span class="btc-stat-title" data-i18n="liveBtc.change24h">نسبة التغير (24 ساعة)</span>
+              <div id="btcLiveChange" class="btc-stat-change change-up">--</div>
+            </div>
+
+            <div class="btc-stat-card">
+              <span class="btc-stat-title" data-i18n="liveBtc.marketCap">القيمة السوقية الإجمالية</span>
+              <div class="btc-stat-value" id="btcLiveMarketCap">--</div>
+            </div>
+
+            <div class="btc-stat-card">
+              <span class="btc-stat-title" data-i18n="liveBtc.vol24h">حجم التداول اليومي</span>
+              <div class="btc-stat-value" id="btcLiveVol">--</div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- 9. PROJECTS WE FOLLOW SECTION (المشاريع التي نتابعها) -->
+    <section class="section-projects" id="projects-section">
+      <div class="container">
+        
+        <div class="section-header">
+          <div class="section-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+            </svg>
+            <span data-i18n="projectsSection.badge">المشاريع والشراكات</span>
+          </div>
+
+          <h2 class="section-title" data-i18n="projectsSection.title">المشاريع التي نتابعها</h2>
+          <p class="section-desc" data-i18n="projectsSection.desc">
+            نستكشف ونحلل أحدث المشاريع الواعدة في قطاع التعدين والبلوكشين لتقديم أفضل الفرص لشبكتنا.
+          </p>
+        </div>
+
+        <div class="projects-grid" id="projectsGridContainer">
+          <!-- Dynamic render from config.js -->
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- 10. CONTACT SECTION (تواصل معنا) -->
+    <section class="section-contact" id="contact-section">
+      <div class="container">
+        
+        <div class="section-header">
+          <div class="section-badge badge-gold">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+            <span data-i18n="contactSection.badge">تواصل مع فريقنا</span>
+          </div>
+
+          <h2 class="section-title" data-i18n="contactSection.title">نحن هنا للإجابة على استفساراتك</h2>
+          <p class="section-desc" data-i18n="contactSection.desc">
+            سواء كنت مبتدئاً تبحث عن فهم المجال أو ترغب في بدء التعدين، فريق TOPTEAM جاهز لمساعدتك.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          
+          <!-- WhatsApp Contact Card -->
+          <div class="contact-card" id="contactWaCard">
+            <div class="contact-card-icon" style="background: rgba(37, 211, 102, 0.15); color: #25d366;">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="currentColor">
+                <path d="M16 2.5C8.544 2.5 2.5 8.544 2.5 16c0 2.657.77 5.137 2.1 7.227L2.6 30l7.037-1.956C11.604 29.17 13.738 29.5 16 29.5c7.456 0 13.5-6.044 13.5-13.5S23.456 2.5 16 2.5zm0 24.588c-2.023 0-3.9-.56-5.51-1.53l-.396-.237-4.108 1.144 1.103-3.993-.26-.414a11.01 11.01 0 0 1-1.727-5.958c0-6.12 4.98-11.1 11.1-11.1 6.12 0 11.1 4.98 11.1 11.1 0 6.12-4.98 11.088-11.1 11.088zm6.096-8.318c-.334-.167-1.977-.975-2.283-1.087-.306-.111-.528-.167-.75.167-.223.334-.863 1.087-1.057 1.31-.195.223-.39.25-.724.084-.334-.167-1.41-.52-2.686-1.658-.993-.886-1.663-1.98-1.858-2.314-.195-.334-.02-.515.146-.681.15-.15.334-.39.501-.585.167-.195.223-.334.334-.557.111-.223.056-.418-.028-.585-.084-.167-.75-1.81-.103-2.48-.344-.65-.696-.56-.957-.573-.247-.013-.53-.016-.813-.016-.283 0-.743.106-1.132.53-.39.423-1.488 1.455-1.488 3.548s1.523 4.114 1.737 4.402c.214.288 2.997 4.577 7.26 6.42 1.014.438 1.805.7 2.423.897 1.018.324 1.944.278 2.676.169.816-.122 2.515-1.028 2.87-2.02.355-.992.355-1.842.25-2.02-.104-.178-.327-.284-.661-.451z"/>
+              </svg>
+            </div>
+            <h3 class="card-title" data-i18n="contactSection.waCardTitle">محادثة WhatsApp فورية</h3>
+            <p class="card-desc" data-i18n="contactSection.waCardDesc">تواصل مباشر وسريع مع مستشارينا عبر الواتساب.</p>
+            <a href="https://wa.me/message/GE2RCRNCROKWL1" target="_blank" rel="noopener noreferrer" class="btn-primary btn-wa-direct" style="background: #25d366; color: #fff; width: 100%;" data-i18n="contactSection.waBtn">راسلنا على WhatsApp</a>
+          </div>
+
+          <!-- Official Telegram Channel Card (بديل بطاقة الإيميل) -->
+          <div class="contact-card" id="contactTelegramCard">
+            <div class="contact-card-icon" style="background: rgba(0, 136, 204, 0.15); color: #0088cc;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+              </svg>
+            </div>
+            <h3 class="card-title" data-i18n="contactSection.tgCardTitle">قناة Telegram الرسمية</h3>
+            <p class="card-desc" data-i18n="contactSection.tgCardDesc">انضم لقناة ومجتمع TOPTEAM الرسمي لمتابعة أحدث أخبار وتحديثات التعدين.</p>
+            <a href="https://t.me/Hash1Net" target="_blank" rel="noopener noreferrer" class="btn-primary btn-tg-direct" style="background: #0088cc; color: #fff; width: 100%;" data-i18n="contactSection.tgBtn">انضم إلى قناة Telegram</a>
+          </div>
+
+          <!-- Social Community Card -->
+          <div class="contact-card" id="contactSocialCard">
+            <div class="contact-card-icon icon-purple">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+              </svg>
+            </div>
+            <h3 class="card-title" data-i18n="contactSection.socialTitle">مجتمعاتنا الرقمية</h3>
+            <p class="card-desc" data-i18n="contactSection.socialDesc">تابع تحليلاتنا وتحديثات التعدين على منصاتنا الرسمية.</p>
+            <div class="footer-social-row" style="justify-content: center; width: 100%;">
+              <a href="https://t.me/Hash1Net" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Telegram">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              </a>
+              <a href="https://x.com/TOPTEAM_Crypto" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Twitter / X">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+              </a>
+              <a href="https://youtube.com/@TOPTEAM_Crypto" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="YouTube">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- =========================================================================
+       FOOTER
+       ========================================================================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <!-- Col 1: Brand Info -->
+        <div class="footer-col">
+          <div class="brand-logo">
+            <div class="brand-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+              </svg>
+            </div>
+            <div class="brand-text">
+              <div class="brand-name">TOP<span>TEAM</span></div>
+              <div class="brand-tagline">Crypto & Mining</div>
+            </div>
+          </div>
+          <p class="footer-desc" data-i18n="footer.brandDesc">
+            المنظومة الاحترافية الرائدة لاستكشاف عالم العملات الرقمية، البلوكشين، وتعدين العملات السحابي بخبرة تتجاوز 13 عامًا.
+          </p>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div class="footer-col">
+          <h4 class="footer-title" data-i18n="footer.quickLinks">روابط سريعة</h4>
+          <ul class="footer-links-list">
+            <li><a href="#hero" class="footer-link" data-i18n="nav.home">الرئيسية</a></li>
+            <li><a href="#edu-section" class="footer-link" data-i18n="nav.crypto">العملات الرقمية</a></li>
+            <li><a href="#coins-section" class="footer-link" data-i18n="nav.blockchain">العملات المدعومة</a></li>
+            <li><a href="#hashnet-section" class="footer-link" data-i18n="nav.hashnet">مشروع HashNet</a></li>
+            <li><a href="#packages-section" class="footer-link" data-i18n="nav.mining">باقات التعدين</a></li>
+            <li><a href="#live-btc-section" class="footer-link" data-i18n="nav.live">مؤشرات مباشرة</a></li>
+            <li><a href="#contact-section" class="footer-link" data-i18n="nav.contact">تواصل معنا</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Legal & Transparency Disclaimer -->
+        <div class="footer-col">
+          <h4 class="footer-title" data-i18n="footer.legalTitle">الشفافية والمسؤولية</h4>
+          <p class="footer-desc" data-i18n="footer.disclaimer">
+            إخلاء مسؤولية: الاستثمار وتعدين العملات الرقمية ينطوي على مخاطر تقلب الأسعار وصعوبة الشبكة. لا نقدم نصائح مالية مباشرة أو عوائد مضمونة.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom-bar">
+        <div data-i18n="footer.rights">جميع الحقوق محفوظة لعلامة TOPTEAM © 2026</div>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="#" class="footer-link" data-i18n="footer.privacy">سياسة الخصوصية</a>
+          <a href="#" class="footer-link" data-i18n="footer.terms">شروط الاستخدام</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- =========================================================================
+       FLOATING WHATSAPP BUTTON (عائم واحترافي)
+       ========================================================================= -->
+  <div class="whatsapp-floating-widget">
+    <div class="whatsapp-tooltip" data-i18n="whatsapp.tooltip">تحدث معنا عبر WhatsApp</div>
+    <a href="https://wa.me/message/GE2RCRNCROKWL1" target="_blank" rel="noopener noreferrer" class="whatsapp-btn" id="floatingWhatsappBtn" aria-label="تواصل عبر واتساب">
+      <svg viewBox="0 0 32 32">
+        <path d="M16 2.5C8.544 2.5 2.5 8.544 2.5 16c0 2.657.77 5.137 2.1 7.227L2.6 30l7.037-1.956C11.604 29.17 13.738 29.5 16 29.5c7.456 0 13.5-6.044 13.5-13.5S23.456 2.5 16 2.5zm0 24.588c-2.023 0-3.9-.56-5.51-1.53l-.396-.237-4.108 1.144 1.103-3.993-.26-.414a11.01 11.01 0 0 1-1.727-5.958c0-6.12 4.98-11.1 11.1-11.1 6.12 0 11.1 4.98 11.1 11.1 0 6.12-4.98 11.088-11.1 11.088zm6.096-8.318c-.334-.167-1.977-.975-2.283-1.087-.306-.111-.528-.167-.75.167-.223.334-.863 1.087-1.057 1.31-.195.223-.39.25-.724.084-.334-.167-1.41-.52-2.686-1.658-.993-.886-1.663-1.98-1.858-2.314-.195-.334-.02-.515.146-.681.15-.15.334-.39.501-.585.167-.195.223-.334.334-.557.111-.223.056-.418-.028-.585-.084-.167-.75-1.81-.103-2.48-.344-.65-.696-.56-.957-.573-.247-.013-.53-.016-.813-.016-.283 0-.743.106-1.132.53-.39.423-1.488 1.455-1.488 3.548s1.523 4.114 1.737 4.402c.214.288 2.997 4.577 7.26 6.42 1.014.438 1.805.7 2.423.897 1.018.324 1.944.278 2.676.169.816-.122 2.515-1.028 2.87-2.02.355-.992.355-1.842.25-2.02-.104-.178-.327-.284-.661-.451z"/>
+      </svg>
+      <span class="whatsapp-status-dot"></span>
+    </a>
+  </div>
+
+
+  <!-- Core Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/translations.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

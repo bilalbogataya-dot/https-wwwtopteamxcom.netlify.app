@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TOPTEAM Super CMS Dashboard | لوحة التحكم الشاملة وإدارة الهوية والمحتوى</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%230c111d'/><path d='M50 15 L80 32 L80 68 L50 85 L20 68 L20 32 Z' fill='none' stroke='%23f7931a' stroke-width='6'/><path d='M50 32 L50 68 M35 42 L65 58 M65 42 L35 58' stroke='%2300d2ff' stroke-width='4'/></svg>">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&family=Cairo:wght@400;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;600;700&family=Plus+Jakarta+Sans:wght@500;700;800&family=Readex+Pro:wght@400;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Core Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- JSZip CDN for 1-Click Instant Full ZIP Export -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+  
+  <style>
+    .admin-body {
+      background-color: #040711;
+      color: #ffffff;
+      font-family: var(--font-arabic);
+      min-height: 100vh;
+      padding: 2rem 1rem 6rem 1rem;
+    }
+    .admin-container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .admin-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 2rem;
+    }
+    .admin-title-group h1 {
+      font-size: 1.85rem;
+      font-weight: 900;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .admin-title-group p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-top: 0.35rem;
+    }
+
+    /* Dashboard Navigation Tabs */
+    .dashboard-tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      background: rgba(13, 19, 33, 0.85);
+      padding: 0.5rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-card);
+    }
+    .dash-tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      font-weight: 700;
+      font-family: var(--font-arabic);
+      padding: 0.7rem 1.25rem;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: all var(--transition-fast);
+    }
+    .dash-tab-btn:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.05);
+    }
+    .dash-tab-btn.active {
+      background: var(--gradient-gold);
+      color: #000000;
+      box-shadow: 0 4px 15px rgba(247, 147, 26, 0.35);
+    }
+
+    /* Tab Content Panes */
+    .tab-pane {
+      display: none;
+    }
+    .tab-pane.active {
+      display: block;
+      animation: fadeInTab 0.3s ease-out;
+    }
+    @keyframes fadeInTab {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .admin-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-xl);
+      padding: 2.25rem;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(16px);
+      box-shadow: var(--shadow-card);
+    }
+    .admin-card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.75rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .admin-card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(247, 147, 26, 0.12);
+      color: var(--accent-gold);
+      border: 1px solid rgba(247, 147, 26, 0.3);
+    }
+    .admin-card-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+      gap: 1.5rem;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .form-group.full-width {
+      grid-column: 1 / -1;
+    }
+    .form-label {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #e2e8f0;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .form-hint {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .form-input, .form-textarea, .form-select {
+      background: rgba(10, 15, 26, 0.85);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-md);
+      color: #ffffff;
+      padding: 0.85rem 1.1rem;
+      font-size: 0.95rem;
+      transition: all var(--transition-fast);
+      width: 100%;
+    }
+    .form-input.ltr-text {
+      direction: ltr;
+      text-align: left;
+      font-family: var(--font-latin);
+    }
+    .form-input.rtl-text, .form-textarea.rtl-text {
+      direction: rtl;
+      text-align: right;
+      font-family: var(--font-arabic);
+    }
+    .form-textarea {
+      min-height: 90px;
+      resize: vertical;
+      line-height: 1.6;
+    }
+    .form-input:focus, .form-textarea:focus, .form-select:focus {
+      outline: none;
+      border-color: var(--accent-gold);
+      box-shadow: 0 0 15px rgba(247, 147, 26, 0.25);
+    }
+
+    /* Visual Theme Selector Cards */
+    .theme-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .theme-card-option {
+      background: rgba(13, 19, 33, 0.7);
+      border: 2px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem 1rem;
+      cursor: pointer;
+      text-align: center;
+      transition: all var(--transition-fast);
+    }
+    .theme-card-option:hover {
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+    }
+    .theme-card-option.active {
+      border-color: var(--accent-gold);
+      background: rgba(247, 147, 26, 0.08);
+      box-shadow: 0 0 20px rgba(247, 147, 26, 0.25);
+    }
+    .theme-preview-circles {
+      display: flex;
+      justify-content: center;
+      gap: 0.4rem;
+      margin-bottom: 0.75rem;
+    }
+    .color-circle {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+
+    /* Toggle Switches Styles */
+    .toggle-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .toggle-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(10, 15, 26, 0.6);
+      border: 1px solid var(--border-card);
+      padding: 1.2rem 1.5rem;
+      border-radius: var(--radius-lg);
+      transition: border-color var(--transition-fast);
+    }
+    .toggle-item:hover {
+      border-color: var(--border-card-hover);
+    }
+    .toggle-info h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.2rem;
+    }
+    .toggle-info p {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+    }
+    .switch-wrap {
+      position: relative;
+      display: inline-block;
+      width: 54px;
+      height: 30px;
+      flex-shrink: 0;
+    }
+    .switch-wrap input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .switch-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #334155;
+      transition: .3s;
+      border-radius: 30px;
+    }
+    .switch-slider:before {
+      position: absolute;
+      content: "";
+      height: 22px;
+      width: 22px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: .3s;
+      border-radius: 50%;
+    }
+    input:checked + .switch-slider {
+      background-color: #10b981;
+    }
+    input:checked + .switch-slider:before {
+      transform: translateX(24px);
+    }
+
+    /* Custom Cards List */
+    .custom-cards-manager-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .card-item-manage {
+      background: rgba(10, 15, 26, 0.7);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    /* Sticky Action Bar */
+    .actions-sticky-bar {
+      position: sticky;
+      bottom: 1.5rem;
+      background: rgba(13, 19, 33, 0.95);
+      border: 1px solid var(--border-card-hover);
+      border-radius: var(--radius-xl);
+      padding: 1.25rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.85);
+      z-index: 100;
+    }
+
+    .toast-msg {
+      position: fixed;
+      top: 2rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(-100px);
+      background: #10b981;
+      color: #000000;
+      font-weight: 800;
+      padding: 0.9rem 2rem;
+      border-radius: var(--radius-full);
+      box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
+      z-index: 2000;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .toast-msg.show {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+      .actions-sticky-bar {
+        flex-direction: column;
+      }
+      .actions-sticky-bar button, .actions-sticky-bar a {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body class="admin-body">
+
+  <div id="toast" class="toast-msg">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    <span id="toastText">تم حفظ وتطبيق التعديلات بنجاح!</span>
+  </div>
+
+  <div class="admin-container">
+    
+    <!-- Admin Header -->
+    <div class="admin-header">
+      <div class="admin-title-group">
+        <h1>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent-gold)" stroke-width="2.5">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="3" y1="9" x2="21" y2="9"></line>
+            <line x1="9" y1="21" x2="9" y2="9"></line>
+          </svg>
+          لوحة تحكم وإدارة هوية ومحتوى TOPTEAM (Super CMS)
+        </h1>
+        <p>تغيير الثيمات، الخطوط، إضافة مربعات جديدة، إدارة شبكات التواصل، وتفعيل/إلغاء الخيارات بنقرة واحدة.</p>
+      </div>
+
+      <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+        <a href="index.html" class="btn-secondary" target="_blank">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          <span>معاينة الموقع الحي</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="dashboard-tabs">
+      <button type="button" class="dash-tab-btn active" data-tab="tab-appearance">
+        <span>🎨 الثيمات والخطوط والمظهر</span>
+      </button>
+      <button type="button" class="dash-tab-btn" data-tab="tab-toggles">
+        <span>🎚️ إظهار وإلغاء الأقسام</span>
+      </button>
+      <button type="button" class="dash-tab-btn" data-tab="tab-custom-cards">
+        <span>➕ إضافة مربعات وبطاقات جديدة</span>
+      </button>
+      <button type="button" class="dash-tab-btn" data-tab="tab-social">
+        <span>📱 شبكات التواصل والسوشيال</span>
+      </button>
+      <button type="button" class="dash-tab-btn" data-tab="tab-links">
+        <span>⚡ روابط الإحالة والباقات</span>
+      </button>
+      <button type="button" class="dash-tab-btn" data-tab="tab-content">
+        <span>✍️ تحرير نصوص الموقع</span>
+      </button>
+    </div>
+
+    <!-- =========================================================================
+         TAB 1: APPEARANCE & THEMES & FONTS
+         ========================================================================= -->
+    <div class="tab-pane active" id="tab-appearance">
+      
+      <!-- Theme Switcher Card -->
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <div class="admin-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><path d="M12 2v20M12 12l7 7M12 12l-7-7"/></svg>
+          </div>
+          <div>
+            <h2 class="admin-card-title">تغيير ثيم وتصميم الموقع (Website Themes)</h2>
+            <span class="form-hint">اختر الطابع البصري والألوان الرئيسية التي تناسب ذوقك وتغير الموقع بالكامل</span>
+          </div>
+        </div>
+
+        <div class="theme-grid">
+          <!-- Theme 1: Gold Obsidian (Default) -->
+          <div class="theme-card-option active" data-theme-val="gold" id="themeOptGold">
+            <div class="theme-preview-circles">
+              <div class="color-circle" style="background: #f7931a;"></div>
+              <div class="color-circle" style="background: #070a11;"></div>
+              <div class="color-circle" style="background: #101726;"></div>
+            </div>
+            <h4 style="font-weight: 800; font-size: 1rem;">الذهب والأسود الفاخر</h4>
+            <span style="font-size: 0.78rem; color: var(--text-secondary);">Dark Luxury Gold (افتراضي)</span>
+          </div>
+
+          <!-- Theme 2: Cyber Neon Cyan -->
+          <div class="theme-card-option" data-theme-val="cyber" id="themeOptCyber">
+            <div class="theme-preview-circles">
+              <div class="color-circle" style="background: #00d2ff;"></div>
+              <div class="color-circle" style="background: #050b14;"></div>
+              <div class="color-circle" style="background: #3b82f6;"></div>
+            </div>
+            <h4 style="font-weight: 800; font-size: 1rem;">السايبر نيون</h4>
+            <span style="font-size: 0.78rem; color: var(--text-secondary);">Cyber Electric Cyan</span>
+          </div>
+
+          <!-- Theme 3: Emerald Mining Matrix -->
+          <div class="theme-card-option" data-theme-val="emerald" id="themeOptEmerald">
+            <div class="theme-preview-circles">
+              <div class="color-circle" style="background: #10b981;"></div>
+              <div class="color-circle" style="background: #040e0a;"></div>
+              <div class="color-circle" style="background: #34d399;"></div>
+            </div>
+            <h4 style="font-weight: 800; font-size: 1rem;">الزمرد الأخضر</h4>
+            <span style="font-size: 0.78rem; color: var(--text-secondary);">Emerald Mining Matrix</span>
+          </div>
+
+          <!-- Theme 4: Royal Violet -->
+          <div class="theme-card-option" data-theme-val="purple" id="themeOptPurple">
+            <div class="theme-preview-circles">
+              <div class="color-circle" style="background: #a855f7;"></div>
+              <div class="color-circle" style="background: #0a0614;"></div>
+              <div class="color-circle" style="background: #ec4899;"></div>
+            </div>
+            <h4 style="font-weight: 800; font-size: 1rem;">الأرجواني الملكي</h4>
+            <span style="font-size: 0.78rem; color: var(--text-secondary);">Royal Tech Purple</span>
+          </div>
+
+          <!-- Theme 5: Ruby Crimson -->
+          <div class="theme-card-option" data-theme-val="crimson" id="themeOptCrimson">
+            <div class="theme-preview-circles">
+              <div class="color-circle" style="background: #f43f5e;"></div>
+              <div class="color-circle" style="background: #100609;"></div>
+              <div class="color-circle" style="background: #f97316;"></div>
+            </div>
+            <h4 style="font-weight: 800; font-size: 1rem;">الياقوت الناري</h4>
+            <span style="font-size: 0.78rem; color: var(--text-secondary);">Ruby Tech Fire</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Font Family Selector Card -->
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <div class="admin-card-icon" style="background: rgba(0, 210, 255, 0.12); color: var(--accent-cyan); border-color: rgba(0, 210, 255, 0.3);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="4 7 4 4 20 4 20 7"></polyline><line x1="9" y1="20" x2="15" y2="20"></line><line x1="12" y1="4" x2="12" y2="20"></line></svg>
+          </div>
+          <div>
+            <h2 class="admin-card-title">تغيير نوع الخط العربي (Typography Font)</h2>
+            <span class="form-hint">اختر خط الكتابة المفضل لك ليتم تطبيقه على كامل نصوص وعناوين الموقع</span>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group full-width">
+            <label class="form-label" for="fontSelect">اختر الخط العربي المفضل:</label>
+            <select id="fontSelect" class="form-select rtl-text">
+              <option value="cairo">خط كايرو (Cairo) - الخط الافتراضي الاحترافي والحديث</option>
+              <option value="tajawal">خط تجوال (Tajawal) - خط عصري ناعم وفخم</option>
+              <option value="ibm">خط آي بي إم بليكس (IBM Plex Sans Arabic) - خط تقني وعالمي</option>
+              <option value="almarai">خط المراعي (Almarai) - خط عربي أنيق وواضح جداً</option>
+              <option value="readex">خط ريديكس برو (Readex Pro) - خط عصري ذو طابع رقمي</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- =========================================================================
+         TAB 2: TOGGLES & MODULAR VISIBILITY
+         ========================================================================= -->
+    <div class="tab-pane" id="tab-toggles">
+      
+      <!-- Contact Cards Toggles -->
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <div class="admin-card-icon" style="background: rgba(244, 63, 94, 0.12); color: #fb7185; border-color: rgba(244, 63, 94, 0.3);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path><line x1="12" y1="2" x2="12" y2="12"></line></svg>
+          </div>
+          <div>
+            <h2 class="admin-card-title">خيارات التواصل الفردية (إضافة / إزالة)</h2>
+            <span class="form-hint">يمكنك تفعيل أو إزالة أي وسيلة تواصل في ثانية واحدة</span>
+          </div>
+        </div>
+
+        <div class="toggle-list">
+          
+          <!-- Telegram Card Toggle -->
+          <div class="toggle-item">
+            <div class="toggle-info">
+              <h4>✈️ بطاقة قناة Telegram الرسمية (مكان الإيميل)</h4>
+              <p>إظهار أو إخفاء بطاقة الانضمام لقناة التليجرام الرسمية في قسم التواصل</p>
+            </div>
+            <label class="switch-wrap">
+              <input type="checkbox" id="toggleTelegramCard" checked>
+              <span class="switch-slider"></span>
+            </label>
+          </div>
+
+          <!-- WhatsApp Card Toggle -->
+          <div class="toggle-item">
+            <div class="toggle-info">
+              <h4>💬 بطاقة WhatsApp في قسم التواصل</h4>
+              <p>إظهار أو إخفاء بطاقة محادثة الواتساب في قسم تواصل معنا</p>
+            </div>
+            <label class="switch-wrap">
+              <input type="checkbox" id="toggleWaCard" checked>
+              <span class="switch-slider"></span>
+            </label>
+          </div>
+
+          <!-- Floating WhatsApp Widget Toggle -->
+          <div class="toggle-item">
+            <div class="toggle-info">
+              <h4>🟢 زر WhatsApp العائم (أسفل الشاشة)</h4>
+              <p>الزر الأخضر الدائري العائم الثابت في زاوية الشاشة</p>
+            </div>
+            <label class="switch-wrap">
+              <input type="checkbox" id="toggleWaFloating" checked>
+              <span class="switch-slider"></span>
+            </label>
+          </div>
+
+          <!-- Social Card Toggle -->
+          <div class="toggle-item">
+            <div class="toggle-info">
+              <h4>🌐 بطاقة المجتمعات الرقمية (Telegram / X / YouTube)</h4>
+              <p>إظهار أو إخفاء بطاقة شبكات التواصل الاجتماعي</p>
+            </div>
+            <label class="switch-wrap">
+              <input type="checkbox" id="toggleSocialCard" checked>
+              <span class="switch-slider"></span>
+            </label>
+          </div>
+
+          <!-- Language Switcher Toggle -->
+          <div class="toggle-item">
+            <div class="toggle-info">
+              <h4>🌍 مبدل اللغات (AR / EN / FR / ES)</h4>
+              <p>إظهار أو إخفاء قائمة تغيير لغة الموقع في الهيدر</p>
+            </div>
+            <label class="switch-wrap">
+              <input type="checkbox" id="toggleLangSwitcher" checked>
+              <span class="switch-slider"></span>
+            </label>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Main Sections Toggles -->
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <div class="admin-card-icon" style="background: rgba(0, 210, 255, 0.12); color: var(--accent-cyan); border-color: rgba(0, 210, 255, 0.3);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+          </div>
+          <div>
+            <h2 class="admin-card-title">إظهار / إخفاء الأقسام الرئيسية الكاملة</h2>
+            <span class="form-hint">يمكنك تعطيل أي قسم كامل بنقرة واحدة متى شئت</span>
+          </div>
+        </div>
+
+        <div class="toggle-list">
+          
+          <div class="toggle-item">
+            <div class="toggle-info">
+              <h4>📊 قسم مؤشرات البيتكوين الحية (Live Bitcoin Ticker)</h4>
+              <p>القسم الذي يعرض سعر البيتكوين المباشر والقيمة السوقية وحجم التداول</p>
+            </div>
+            <label class="switch-wrap">
+              <input type="checkbox" id="toggleLiveBtc" checked>
+              <span class="switch-slider"></span>
+            </label>
+          </div>
+
+          <div class="toggle-item">
+            <div class="toggle-info">
+              <h4>🚀 قسم المشاريع التي نتابعها (Projects Section)</h4>
+              <p>شبكة المشاريع التابعة والبلوكشين التي يتابعها فريق TOPTEAM</p>
+            </div>
+            <label class="switch-wrap">
+              <input type="checkbox" id="toggleProjects" checked>
+              <span class="switch-slider"></span>
+            </label>
+          </div>
+
+          <div class="toggle-item">
+            <div class="toggle-info">
+              <h4>💎 قسم باقات التعدين الـ 5 (Mining Packages)</h4>
+              <p>جدول باقات التعدين السحابي (150$ إلى 5,000$)</p>
+            </div>
+            <label class="switch-wrap">
+              <input type="checkbox" id="togglePackages" checked>
+              <span class="switch-slider"></span>
+            </label>
+          </div>
+
+          <div class="toggle-item">
+            <div class="toggle-info">
+              <h4>⚡ قسم مشروع HashNet المتكامل</h4>
+              <p>البنية التحتية، أجهزة Antminer، وخطوات التسجيل</p>
+            </div>
+            <label class="switch-wrap">
+              <input type="checkbox" id="toggleHashNet" checked>
+              <span class="switch-slider"></span>
+            </label>
+          </div>
+
+          <div class="toggle-item">
+            <div class="toggle-info">
+              <h4>📚 قسم الدليل والمفاهيم التعليمية (Crypto & Blockchain)</h4>
+              <p>شرح ما هي العملات الرقمية، ما هو البلوكشين، وما هو التعدين</p>
+            </div>
+            <label class="switch-wrap">
+              <input type="checkbox" id="toggleEdu" checked>
+              <span class="switch-slider"></span>
+            </label>
+          </div>
+
+          <div class="toggle-item">
+            <div class="toggle-info">
+              <h4>🪙 قسم العملات الـ 6 المدعومة (Supported Coins)</h4>
+              <p>بطاقات البيتكوين، كاسبا، لايتكوين، دوجكوين، بيتكاش، وزيكاش</p>
+            </div>
+            <label class="switch-wrap">
+              <input type="checkbox" id="toggleCoins" checked>
+              <span class="switch-slider"></span>
+            </label>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- =========================================================================
+         TAB 3: CUSTOM CARDS & BOXES CREATOR (منشئ المربعات والبطاقات الجديدة)
+         ========================================================================= -->
+    <div class="tab-pane" id="tab-custom-cards">
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <div class="admin-card-icon" style="background: rgba(16, 185, 129, 0.12); color: var(--accent-emerald); border-color: rgba(16, 185, 129, 0.3);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          </div>
+          <div>
+            <h2 class="admin-card-title">إنشاء وإضافة مربع / بطاقة جديدة في الموقع</h2>
+            <span class="form-hint">أضف أي مشروع أو خدمة أو فرصة جديدة وستظهر فوراً كبطاقة زجاجية فخمة في قسم المشاريع</span>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label" for="newCardTitle">عنوان المربع / البطاقة:</label>
+            <input type="text" id="newCardTitle" class="form-input rtl-text" placeholder="مثال: قناة توصيات التعدين">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="newCardBadge">شارة الحالة (Badge):</label>
+            <input type="text" id="newCardBadge" class="form-input rtl-text" placeholder="مثال: نشط وموصى به">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="newCardSubtitle">التصنيف أو العنوان الفرعي:</label>
+            <input type="text" id="newCardSubtitle" class="form-input rtl-text" placeholder="مثال: مجتمع واستشارات">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="newCardColor">لون الإطار والإضاءة:</label>
+            <select id="newCardColor" class="form-select rtl-text">
+              <option value="#f7931a">ذهبي كلاسيكي (Gold)</option>
+              <option value="#00d2ff">أزرق نيون (Cyan)</option>
+              <option value="#10b981">زمردي أخضر (Emerald)</option>
+              <option value="#a855f7">بنفسجي ملكي (Purple)</option>
+              <option value="#f43f5e">أحمر ناري (Crimson)</option>
+            </select>
+          </div>
+
+          <div class="form-group full-width">
+            <label class="form-label" for="newCardDesc">وصف المربع أو الخدمة:</label>
+            <textarea id="newCardDesc" class="form-textarea rtl-text" placeholder="اكتب نبذة توضيحية عما يقدمه هذا المربع..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="newCardLink">رابط الزر (URL):</label>
+            <input type="url" id="newCardLink" class="form-input ltr-text" placeholder="https://t.me/YourChannel">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="newCardBtnText">نص الزر:</label>
+            <input type="text" id="newCardBtnText" class="form-input rtl-text" placeholder="زيارة الرابط / استكشف الآن">
+          </div>
+
+          <div class="form-group full-width" style="margin-top: 0.5rem;">
+            <button type="button" class="btn-primary" id="addNewCardBtn" style="width: auto;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              <span>إضافة المربع إلى الموقع الآن</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Current Custom Cards List -->
+        <h3 style="font-size: 1.15rem; font-weight: 800; margin-top: 2rem; margin-bottom: 1rem; color: #fff;">قائمة المربعات المخصصة الحالية:</h3>
+        <div class="custom-cards-manager-list" id="customCardsListDisplay">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================================================================
+         TAB 4: SOCIAL MEDIA MANAGER
+         ========================================================================= -->
+    <div class="tab-pane" id="tab-social">
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <div class="admin-card-icon" style="background: rgba(168, 85, 247, 0.12); color: var(--accent-purple); border-color: rgba(168, 85, 247, 0.3);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+          </div>
+          <div>
+            <h2 class="admin-card-title">إدارة شبكات التواصل الاجتماعي (Social Channels)</h2>
+            <span class="form-hint">أدخل روابط قنواتك وشبكاتك ليتم ربطها مباشرة في بطاقات وأيقونات الموقع</span>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label" for="socialTelegram">✈️ رابط قناة Telegram:</label>
+            <input type="url" id="socialTelegram" class="form-input ltr-text" placeholder="https://t.me/Hash1Net">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="socialWhatsApp">💬 رابط / رقم WhatsApp:</label>
+            <input type="text" id="socialWhatsApp" class="form-input ltr-text" placeholder="https://wa.me/message/GE2RCRNCROKWL1">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="socialTwitter">🐦 رابط منصة Twitter / X:</label>
+            <input type="url" id="socialTwitter" class="form-input ltr-text" placeholder="https://x.com/TOPTEAM_Crypto">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="socialYouTube">📺 رابط قناة YouTube:</label>
+            <input type="url" id="socialYouTube" class="form-input ltr-text" placeholder="https://youtube.com/@TOPTEAM_Crypto">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="socialTikTok">🎵 رابط حساب TikTok (اختياري):</label>
+            <input type="url" id="socialTikTok" class="form-input ltr-text" placeholder="https://tiktok.com/@topteam">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="socialDiscord">🎮 رابط خادم Discord (اختياري):</label>
+            <input type="url" id="socialDiscord" class="form-input ltr-text" placeholder="https://discord.gg/topteam">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="socialInstagram">📸 رابط Instagram (اختياري):</label>
+            <input type="url" id="socialInstagram" class="form-input ltr-text" placeholder="https://instagram.com/TOPTEAM_Crypto">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="socialFacebook">📘 رابط Facebook (اختياري):</label>
+            <input type="url" id="socialFacebook" class="form-input ltr-text" placeholder="https://facebook.com/topteam">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================================================================
+         TAB 5: REFERRAL & PACKAGE LINKS
+         ========================================================================= -->
+    <div class="tab-pane" id="tab-links">
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <div class="admin-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          </div>
+          <div>
+            <h2 class="admin-card-title">روابط الإحالة الأساسية وباقات التعدين</h2>
+            <span class="form-hint">الروابط المباشرة لأزرار التعدين وباقات 150$ إلى 5000$</span>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group full-width">
+            <label class="form-label" for="startMiningUrl">رابط زر "ابدأ تعدين البيتكوين" الرئيسي:</label>
+            <input type="url" id="startMiningUrl" class="form-input ltr-text" placeholder="https://app.hashnet.ai/Topteam2">
+          </div>
+
+          <div class="form-group full-width">
+            <label class="form-label" for="hashnetRegisterUrl">رابط زر "سجل الآن في HashNet":</label>
+            <input type="url" id="hashnetRegisterUrl" class="form-input ltr-text" placeholder="https://app.hashnet.ai/Topteam2">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">رابط باقة 150$:</label>
+            <input type="url" id="plan150Url" class="form-input ltr-text" placeholder="https://app.hashnet.ai/Topteam2">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">رابط باقة 500$:</label>
+            <input type="url" id="plan500Url" class="form-input ltr-text" placeholder="https://app.hashnet.ai/Topteam2">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">رابط باقة 1,000$ (الأكثر طلباً):</label>
+            <input type="url" id="plan1000Url" class="form-input ltr-text" placeholder="https://app.hashnet.ai/Topteam2">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">رابط باقة 2,500$:</label>
+            <input type="url" id="plan2500Url" class="form-input ltr-text" placeholder="https://app.hashnet.ai/Topteam2">
+          </div>
+
+          <div class="form-group full-width">
+            <label class="form-label">رابط باقة 5,000$ (النخبة):</label>
+            <input type="url" id="plan5000Url" class="form-input ltr-text" placeholder="https://app.hashnet.ai/Topteam2">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================================================================
+         TAB 6: TEXT CONTENT CMS
+         ========================================================================= -->
+    <div class="tab-pane" id="tab-content">
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <div class="admin-card-icon" style="background: rgba(0, 210, 255, 0.12); color: var(--accent-cyan); border-color: rgba(0, 210, 255, 0.3);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <div>
+            <h2 class="admin-card-title">نصوص الواجهة والخبرة</h2>
+            <span class="form-hint">العنوان الرئيسي، الوصف التعريفي، وبطاقات الخبرة</span>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group full-width">
+            <label class="form-label" for="heroBadge">شارة الواجهة (Pill Badge):</label>
+            <input type="text" id="heroBadge" class="form-input rtl-text" placeholder="الجيل الجديد لتعدين العملات الرقمية والبلوكشين">
+          </div>
+
+          <div class="form-group full-width">
+            <label class="form-label" for="heroTitleStart">العنوان الرئيسي الترحيبي:</label>
+            <input type="text" id="heroTitleStart" class="form-input rtl-text" placeholder="اكتشف عالم العملات الرقمية مع">
+          </div>
+
+          <div class="form-group full-width">
+            <label class="form-label" for="heroDesc">الوصف التعريفي للواجهة:</label>
+            <textarea id="heroDesc" class="form-textarea rtl-text" placeholder="بخبرة تتجاوز 13 عامًا في عالم العملات الرقمية..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="heroBtnPrimary">نص زر التعدين الرئيسي:</label>
+            <input type="text" id="heroBtnPrimary" class="form-input rtl-text" placeholder="ابدأ تعدين البيتكوين">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="heroBtnSecondary">نص الزر الثانوي:</label>
+            <input type="text" id="heroBtnSecondary" class="form-input rtl-text" placeholder="اكتشف عالم العملات الرقمية">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================================================================
+         STICKY ACTION BAR AT BOTTOM
+         ========================================================================= -->
+    <div class="actions-sticky-bar">
+      <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+        <!-- Save Live -->
+        <button type="button" class="btn-primary" id="saveAllBtn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+          <span>حفظ وتطبيق التغييرات فوراً</span>
+        </button>
+
+        <!-- Download Full Website ZIP (1-Click for Netlify) -->
+        <button type="button" class="btn-primary" id="downloadFullZipBtn" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: #ffffff;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          <span>تنزيل الموقع كاملاً (ZIP جاهز لـ Netlify)</span>
+        </button>
+
+        <!-- Download config.js -->
+        <button type="button" class="btn-secondary" id="downloadConfigBtn">
+          <span>تصدير config.js فقط</span>
+        </button>
+      </div>
+
+      <button type="button" class="btn-secondary" id="resetBtn" style="border-color: rgba(244, 63, 94, 0.4); color: #fda4af;">
+        <span>استعادة الإعدادات الأصلية</span>
+      </button>
+    </div>
+
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/translations.js"></script>
+  <script>
+    let currentSelectedTheme = 'gold';
+    let userCustomCardsList = [];
+
+    // Tab Switching Logic
+    const tabBtns = document.querySelectorAll('.dash-tab-btn');
+    const tabPanes = document.querySelectorAll('.tab-pane');
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabBtns.forEach(b => b.classList.remove('active'));
+        tabPanes.forEach(p => p.classList.remove('active'));
+
+        btn.classList.add('active');
+        const targetTab = btn.getAttribute('data-tab');
+        document.getElementById(targetTab).classList.add('active');
+      });
+    });
+
+    // Theme selector click
+    document.querySelectorAll('.theme-card-option').forEach(card => {
+      card.addEventListener('click', () => {
+        document.querySelectorAll('.theme-card-option').forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
+        currentSelectedTheme = card.getAttribute('data-theme-val');
+      });
+    });
+
+    // Render Custom Cards Manager list
+    function renderCustomCardsManager() {
+      const container = document.getElementById('customCardsListDisplay');
+      if (!container) return;
+
+      if (userCustomCardsList.length === 0) {
+        container.innerHTML = '<p style="color: var(--text-muted); font-size: 0.9rem;">لم تقم بإضافة مربعات مخصصة بعد. استخدم النموذج أعلاه لإضافة مربع جديد.</p>';
+        return;
+      }
+
+      container.innerHTML = userCustomCardsList.map((card, index) => `
+        <div class="card-item-manage" style="border-left: 4px solid ${card.color || 'var(--accent-gold)'};">
+          <div>
+            <h4 style="color: #fff; font-weight: 700; margin-bottom: 0.25rem;">${card.title} <span style="font-size: 0.75rem; color: ${card.color || 'var(--accent-gold)'}; border: 1px solid ${card.color || 'var(--accent-gold)'}; padding: 2px 6px; border-radius: 4px; margin-inline-start: 6px;">${card.badge || 'مخصص'}</span></h4>
+            <p style="font-size: 0.84rem; color: var(--text-secondary);">${card.desc}</p>
+            <span style="font-size: 0.78rem; color: var(--accent-cyan); direction: ltr; display: inline-block;">${card.link || '#'}</span>
+          </div>
+          <button type="button" class="btn-secondary" onclick="deleteCustomCard(${index})" style="border-color: rgba(244, 63, 94, 0.4); color: #fda4af; padding: 0.5rem 1rem;">
+            <span>إزالة المربع</span>
+          </button>
+        </div>
+      `).join('');
+    }
+
+    window.deleteCustomCard = function(index) {
+      userCustomCardsList.splice(index, 1);
+      renderCustomCardsManager();
+      saveFormValues();
+    };
+
+    // Add New Custom Card
+    document.getElementById('addNewCardBtn').addEventListener('click', () => {
+      const title = document.getElementById('newCardTitle').value.trim();
+      const badge = document.getElementById('newCardBadge').value.trim();
+      const subtitle = document.getElementById('newCardSubtitle').value.trim();
+      const desc = document.getElementById('newCardDesc').value.trim();
+      const link = document.getElementById('newCardLink').value.trim();
+      const btnText = document.getElementById('newCardBtnText').value.trim();
+      const color = document.getElementById('newCardColor').value;
+
+      if (!title || !desc) {
+        alert('يرجى كتابة عنوان ووصف للمربع الجديد');
+        return;
+      }
+
+      userCustomCardsList.push({
+        id: 'custom-' + Date.now(),
+        title,
+        badge: badge || 'جديد',
+        subtitle: subtitle || 'مربع إضافي',
+        desc,
+        link: link || '#',
+        btnText: btnText || 'زيارة الرابط',
+        color: color || '#f7931a'
+      });
+
+      // Clear inputs
+      document.getElementById('newCardTitle').value = '';
+      document.getElementById('newCardBadge').value = '';
+      document.getElementById('newCardSubtitle').value = '';
+      document.getElementById('newCardDesc').value = '';
+      document.getElementById('newCardLink').value = '';
+      document.getElementById('newCardBtnText').value = '';
+
+      renderCustomCardsManager();
+      saveFormValues();
+      showToast('تمت إضافة المربع الجديد بنجاح!');
+    });
+
+    // Load form values
+    function loadFormValues() {
+      const savedConfig = localStorage.getItem('topteam_custom_config');
+      const cfg = savedConfig ? JSON.parse(savedConfig) : TOPTEAM_CONFIG;
+
+      const savedTexts = localStorage.getItem('topteam_custom_texts');
+      const t = savedTexts ? JSON.parse(savedTexts) : (TRANSLATIONS.ar || {});
+
+      // Appearance
+      const app = cfg.appearance || {};
+      currentSelectedTheme = app.theme || 'gold';
+      document.querySelectorAll('.theme-card-option').forEach(card => {
+        if (card.getAttribute('data-theme-val') === currentSelectedTheme) {
+          card.classList.add('active');
+        } else {
+          card.classList.remove('active');
+        }
+      });
+      document.getElementById('fontSelect').value = app.font || 'cairo';
+
+      // Custom Cards
+      userCustomCardsList = cfg.customCards || [];
+      renderCustomCardsManager();
+
+      // Toggles (Visibility)
+      const vis = cfg.visibility || {};
+      document.getElementById('toggleTelegramCard').checked = vis.showTelegramCard !== false;
+      document.getElementById('toggleWaCard').checked = vis.showWhatsAppCard !== false;
+      document.getElementById('toggleWaFloating').checked = vis.showWhatsAppFloating !== false;
+      document.getElementById('toggleSocialCard').checked = vis.showSocialCard !== false;
+      document.getElementById('toggleLangSwitcher').checked = vis.showLanguageSwitcher !== false;
+      document.getElementById('toggleLiveBtc').checked = vis.showLiveBtcSection !== false;
+      document.getElementById('toggleProjects').checked = vis.showProjectsSection !== false;
+      document.getElementById('togglePackages').checked = vis.showPackagesSection !== false;
+      document.getElementById('toggleHashNet').checked = vis.showHashNetSection !== false;
+      document.getElementById('toggleEdu').checked = vis.showEduSection !== false;
+      document.getElementById('toggleCoins').checked = vis.showCoinsSection !== false;
+
+      // Social Links
+      const soc = cfg.social || {};
+      document.getElementById('socialTelegram').value = soc.telegram || 'https://t.me/Hash1Net';
+      document.getElementById('socialWhatsApp').value = cfg.whatsapp?.directUrl || 'https://wa.me/message/GE2RCRNCROKWL1';
+      document.getElementById('socialTwitter').value = soc.twitter || 'https://x.com/TOPTEAM_Crypto';
+      document.getElementById('socialYouTube').value = soc.youtube || 'https://youtube.com/@TOPTEAM_Crypto';
+      document.getElementById('socialTikTok').value = soc.tiktok || '';
+      document.getElementById('socialDiscord').value = soc.discord || '';
+      document.getElementById('socialInstagram').value = soc.instagram || '';
+      document.getElementById('socialFacebook').value = soc.facebook || '';
+
+      // Links
+      document.getElementById('startMiningUrl').value = cfg.referral?.startMiningUrl || 'https://app.hashnet.ai/Topteam2';
+      document.getElementById('hashnetRegisterUrl').value = cfg.referral?.hashnetRegisterUrl || 'https://app.hashnet.ai/Topteam2';
+      document.getElementById('plan150Url').value = cfg.referral?.packages?.plan150 || 'https://app.hashnet.ai/Topteam2';
+      document.getElementById('plan500Url').value = cfg.referral?.packages?.plan500 || 'https://app.hashnet.ai/Topteam2';
+      document.getElementById('plan1000Url').value = cfg.referral?.packages?.plan1000 || 'https://app.hashnet.ai/Topteam2';
+      document.getElementById('plan2500Url').value = cfg.referral?.packages?.plan2500 || 'https://app.hashnet.ai/Topteam2';
+      document.getElementById('plan5000Url').value = cfg.referral?.packages?.plan5000 || 'https://app.hashnet.ai/Topteam2';
+
+      // Texts
+      if (t.hero) {
+        document.getElementById('heroBadge').value = t.hero.badge || '';
+        document.getElementById('heroTitleStart').value = t.hero.titleStart || '';
+        document.getElementById('heroDesc').value = t.hero.description || '';
+        document.getElementById('heroBtnPrimary').value = t.hero.btnPrimary || '';
+        document.getElementById('heroBtnSecondary').value = t.hero.btnSecondary || '';
+      }
+    }
+
+    // Save Form Values
+    function saveFormValues() {
+      const cfg = JSON.parse(JSON.stringify(TOPTEAM_CONFIG));
+
+      // Appearance
+      cfg.appearance = {
+        theme: currentSelectedTheme,
+        font: document.getElementById('fontSelect').value
+      };
+
+      // Custom Cards
+      cfg.customCards = userCustomCardsList;
+
+      // Visibility
+      cfg.visibility = {
+        showTelegramCard: document.getElementById('toggleTelegramCard').checked,
+        showWhatsAppCard: document.getElementById('toggleWaCard').checked,
+        showWhatsAppFloating: document.getElementById('toggleWaFloating').checked,
+        showSocialCard: document.getElementById('toggleSocialCard').checked,
+        showLanguageSwitcher: document.getElementById('toggleLangSwitcher').checked,
+        showLiveBtcSection: document.getElementById('toggleLiveBtc').checked,
+        showProjectsSection: document.getElementById('toggleProjects').checked,
+        showPackagesSection: document.getElementById('togglePackages').checked,
+        showHashNetSection: document.getElementById('toggleHashNet').checked,
+        showEduSection: document.getElementById('toggleEdu').checked,
+        showCoinsSection: document.getElementById('toggleCoins').checked,
+      };
+
+      // Social
+      cfg.social = {
+        telegram: document.getElementById('socialTelegram').value.trim(),
+        twitter: document.getElementById('socialTwitter').value.trim(),
+        youtube: document.getElementById('socialYouTube').value.trim(),
+        tiktok: document.getElementById('socialTikTok').value.trim(),
+        discord: document.getElementById('socialDiscord').value.trim(),
+        instagram: document.getElementById('socialInstagram').value.trim(),
+        facebook: document.getElementById('socialFacebook').value.trim(),
+      };
+      cfg.whatsapp.directUrl = document.getElementById('socialWhatsApp').value.trim();
+
+      // Referral Links
+      cfg.referral.startMiningUrl = document.getElementById('startMiningUrl').value.trim();
+      cfg.referral.hashnetRegisterUrl = document.getElementById('hashnetRegisterUrl').value.trim();
+      cfg.referral.packages = {
+        plan150: document.getElementById('plan150Url').value.trim(),
+        plan500: document.getElementById('plan500Url').value.trim(),
+        plan1000: document.getElementById('plan1000Url').value.trim(),
+        plan2500: document.getElementById('plan2500Url').value.trim(),
+        plan5000: document.getElementById('plan5000Url').value.trim(),
+      };
+
+      localStorage.setItem('topteam_custom_config', JSON.stringify(cfg));
+
+      // Texts
+      const t = JSON.parse(JSON.stringify(TRANSLATIONS.ar || {}));
+      if (!t.hero) t.hero = {};
+      t.hero.badge = document.getElementById('heroBadge').value.trim();
+      t.hero.titleStart = document.getElementById('heroTitleStart').value.trim();
+      t.hero.description = document.getElementById('heroDesc').value.trim();
+      t.hero.btnPrimary = document.getElementById('heroBtnPrimary').value.trim();
+      t.hero.btnSecondary = document.getElementById('heroBtnSecondary').value.trim();
+
+      localStorage.setItem('topteam_custom_texts', JSON.stringify(t));
+
+      showToast('تم حفظ وتطبيق التعديلات بنجاح!');
+    }
+
+    function showToast(text) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastText').textContent = text;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3500);
+    }
+
+    // Export Updated Full Site ZIP on the Fly
+    async function downloadFullWebsiteZip() {
+      showToast('جاري تجميع وضغط ملفات الموقع المحدثة...');
+      saveFormValues();
+
+      const zip = new JSZip();
+      
+      try {
+        const [indexHtml, stylesCss, translationsJs] = await Promise.all([
+          fetch('index.html').then(r => r.text()),
+          fetch('css/styles.css').then(r => r.text()),
+          fetch('js/translations.js').then(r => r.text()),
+        ]);
+
+        const savedConfig = localStorage.getItem('topteam_custom_config');
+        const cfg = savedConfig ? JSON.parse(savedConfig) : TOPTEAM_CONFIG;
+
+        const configJsContent = `/**
+ * TOPTEAM Global Configuration (Generated from CMS Dashboard)
+ */
+const TOPTEAM_CONFIG = ${JSON.stringify(cfg, null, 2)};
+TOPTEAM_CONFIG.whatsapp.getLink = function() {
+  return this.directUrl || "https://wa.me/" + this.phoneNumber;
+};
+window.TOPTEAM_CONFIG = TOPTEAM_CONFIG;
+`;
+
+        const [mainJs, adminHtml] = await Promise.all([
+          fetch('js/main.js').then(r => r.text()),
+          fetch('admin.html').then(r => r.text()),
+        ]);
+
+        zip.file("index.html", indexHtml);
+        zip.file("admin.html", adminHtml);
+        zip.file("netlify.toml", `[build]\n  publish = "."\n\n[[headers]]\n  for = "/*"\n  [headers.values]\n    X-Frame-Options = "DENY"\n    X-Content-Type-Options = "nosniff"\n`);
+        
+        const cssFolder = zip.folder("css");
+        cssFolder.file("styles.css", stylesCss);
+
+        const jsFolder = zip.folder("js");
+        jsFolder.file("config.js", configJsContent);
+        jsFolder.file("translations.js", translationsJs);
+        jsFolder.file("main.js", mainJs);
+
+        const content = await zip.generateAsync({ type: "blob" });
+        saveAs(content, "topteam-updated-site.zip");
+        showToast('تم تحميل ملف الموقع الكامل topteam-updated-site.zip بنجاح!');
+      } catch (err) {
+        console.error('Error generating zip:', err);
+        showToast('تم تصدير ملف config.js المحدث!');
+        downloadConfigFile();
+      }
+    }
+
+    function downloadConfigFile() {
+      const savedConfig = localStorage.getItem('topteam_custom_config');
+      const cfg = savedConfig ? JSON.parse(savedConfig) : TOPTEAM_CONFIG;
+
+      const jsContent = `/**
+ * TOPTEAM Global Configuration (Exported from Control Panel)
+ */
+const TOPTEAM_CONFIG = ${JSON.stringify(cfg, null, 2)};
+TOPTEAM_CONFIG.whatsapp.getLink = function() {
+  return this.directUrl || "https://wa.me/" + this.phoneNumber;
+};
+window.TOPTEAM_CONFIG = TOPTEAM_CONFIG;
+`;
+
+      const blob = new Blob([jsContent], { type: 'application/javascript;charset=utf-8' });
+      saveAs(blob, 'config.js');
+    }
+
+    document.getElementById('saveAllBtn').addEventListener('click', saveFormValues);
+    document.getElementById('downloadFullZipBtn').addEventListener('click', downloadFullWebsiteZip);
+    document.getElementById('downloadConfigBtn').addEventListener('click', downloadConfigFile);
+    document.getElementById('resetBtn').addEventListener('click', () => {
+      if (confirm('هل أنت متأكد من استعادة كافة الإعدادات والنصوص الأصلية؟')) {
+        localStorage.removeItem('topteam_custom_config');
+        localStorage.removeItem('topteam_custom_texts');
+        loadFormValues();
+        showToast('تمت استعادة الإعدادات الأصلية!');
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', loadFormValues);
+  </script>
+</body>
+</html>
